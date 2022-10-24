@@ -1,5 +1,5 @@
 // @ts-check
-import { env } from "./src/env/server.mjs";
+import { env } from './src/env/server.mjs';
 
 /**
  * Don't be scared of the generics here.
@@ -10,19 +10,19 @@ import { env } from "./src/env/server.mjs";
  * @constraint {{import('next').NextConfig}}
  */
 function defineNextConfig(config) {
-  return config;
+	return config;
 }
 
 export default defineNextConfig({
-  reactStrictMode: true,
-  swcMinify: true,
-  /** Next.js i18n docs:
-   * @see https://nextjs.org/docs/advanced-features/i18n-routing
-   * Reference repo for i18n:
-   * @see https://github.com/juliusmarminge/t3-i18n
-   **/
-  i18n: {
-    locales: ["en"],
-    defaultLocale: "en",
-  },
+	reactStrictMode: true,
+	swcMinify: true,
+	/** Next.js i18n docs:
+	 * @see https://nextjs.org/docs/advanced-features/i18n-routing
+	 * Reference repo for i18n:
+	 * @see https://github.com/juliusmarminge/t3-i18n
+	 **/
+	i18n: {
+		locales: ['en'],
+		defaultLocale: 'en',
+	},
 });
