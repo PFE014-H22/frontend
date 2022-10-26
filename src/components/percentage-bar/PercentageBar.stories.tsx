@@ -11,4 +11,5 @@ const Template: ComponentStory<typeof PercentageBar> = args => <PercentageBar {.
 export const Primary = Template.bind({});
 Primary.args = {
 	percentage: 0.5,
+	color: "bg-blue-500"
 };
