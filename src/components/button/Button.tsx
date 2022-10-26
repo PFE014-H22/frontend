@@ -1,9 +1,9 @@
-import React, { ButtonHTMLAttributes, ReactNode } from 'react';
+import { ButtonHTMLAttributes, DOMAttributes, ReactNode } from 'react';
 
 interface ButtonProps {
 	children: ReactNode;
 	type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
-	onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+	onClick?: DOMAttributes<HTMLButtonElement>['onClick'];
 }
 
 export const Button = ({ children, ...props }: ButtonProps) => {
