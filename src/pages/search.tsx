@@ -4,7 +4,11 @@ import { useCallback, useEffect, useState } from 'react';
 import { SearchResponse } from '../server/trpc/router/search';
 import { trpc } from '../utils/trpc';
 
-const Search: NextPage = () => {
+interface SearchProps {
+	q?: string | string[];
+}
+
+const Search: NextPage = ({ q }: SearchProps) => {
 	const router = useRouter();
 	const searchMutation = trpc.search.mockStackoverflow.useMutation();
 	const [answers, setAnswers] = useState<SearchResponse['answers']>([]);
@@ -17,12 +21,11 @@ const Search: NextPage = () => {
 	}, []);
 
 	useEffect(() => {
-		const searchTerm = router.query.q;
-		if (typeof searchTerm !== 'string') {
+		if (typeof q !== 'string') {
 			router.replace('/');
 			return;
 		}
-		fetchAnswers(searchTerm);
+		fetchAnswers(q);
 	}, []);
 
 	return (
@@ -54,6 +57,11 @@ const Search: NextPage = () => {
 			</main>
 		</>
 	);
+};
+
+Search.getInitialProps = async ({ query }): Promise<SearchProps> => {
+	const { q } = query;
+	return { q };
 };
 
 export default Search;
