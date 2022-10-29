@@ -1,14 +1,28 @@
-import Link from './link/Link';
+import Link, { LinkProps } from './link/Link';
 
-export interface HeaderProps {}
+/**
+ * The props used to configure the header component
+ */
+export interface HeaderProps extends Omit<LinkProps, 'children' | 'href'> {}
 
-const Header = ({}: HeaderProps) => {
+/**
+ * Component used to display all the navigations links.
+ */
+const Header = (props: HeaderProps) => {
 	return (
 		<div className="flex justify-end">
 			<ul className="flex justify-between gap-2">
-				<Link href="/">Home</Link>
-				<Link href="/about">About</Link>
-				<Link href="/help">Help</Link>
+				<Link href="/" {...props}>
+					Home
+				</Link>
+
+				<Link href="/about" {...props}>
+					About
+				</Link>
+
+				<Link href="/help" {...props}>
+					Help
+				</Link>
 			</ul>
 		</div>
 	);
