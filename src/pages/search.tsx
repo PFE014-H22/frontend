@@ -1,32 +1,24 @@
 import { NextPage } from 'next';
-import { useRouter } from 'next/router';
-import { useCallback, useEffect, useState } from 'react';
-import { SearchResponse } from '../server/trpc/router/search';
 import { trpc } from '../utils/trpc';
 
+/**
+ * Props used to configure the search page component.
+ */
 interface SearchPageProps {
+	/**
+	 * Query parameter representing the user's query.
+	 */
 	q?: string | string[];
 }
 
-const SearchPage: NextPage = ({ q }: SearchPageProps) => {
-	const router = useRouter();
-	const searchMutation = trpc.search.mockStackoverflow.useMutation();
-	const [answers, setAnswers] = useState<SearchResponse['answers']>([]);
-
-	const fetchAnswers = useCallback(async (searchTerm: string) => {
-		const { answers } = await searchMutation.mutateAsync({
-			searchTerm,
-		});
-		setAnswers(answers);
-	}, []);
-
-	useEffect(() => {
-		if (typeof q !== 'string') {
-			router.replace('/');
-			return;
-		}
-		fetchAnswers(q);
-	}, []);
+/**
+ * Search page component.
+ * Maps to the `/search` endpoint.
+ */
+const SearchPage: NextPage<SearchPageProps> = ({ q }) => {
+	const { data } = trpc.search.mockStackoverflow.useQuery({
+		searchTerm: q as string,
+	});
 
 	return (
 		<>
@@ -43,7 +35,7 @@ const SearchPage: NextPage = ({ q }: SearchPageProps) => {
 					</thead>
 
 					<tbody>
-						{answers.map(answer => (
+						{data?.answers.map(answer => (
 							<tr key={answer.answer_id}>
 								<th>{answer.question_id}</th>
 								<th>{answer.answer_id}</th>
