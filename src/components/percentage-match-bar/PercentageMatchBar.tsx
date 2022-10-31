@@ -4,25 +4,42 @@ import PercentageBar, {
 	PercentageBarProps,
 } from '../percentage-bar/PercentageBar';
 
+/**
+ * The props used to configure the percentage match bar component.
+ */
 export interface PercentageMatchBarProps
 	extends Omit<PercentageBarProps, 'color'> {}
 
-const COLORS = {
-	10: 'bg-[#00FF00]',
-	9: 'bg-[#33ff00]',
-	8: 'bg-[#66ff00]',
-	7: 'bg-[#99ff00]',
-	6: 'bg-[#ccff00]',
-	5: 'bg-[#ffff00]',
-	4: 'bg-[#ffcc00]',
-	3: 'bg-[#ff9900]',
-	2: 'bg-[#ff6600]',
-	1: 'bg-[#ff3300]',
+/**
+ * Shades of color to use as a gradient for the percentage match bar.
+ * Goes from red all the way to green.
+ */
+const COLORS: Record<
+	number,
+	`bg-[#${string}]` | `bg-${string}` | `bg-${string}-${number}`
+> = {
 	0: 'bg-[#ff0000]',
+	1: 'bg-[#ff3300]',
+	2: 'bg-[#ff6600]',
+	3: 'bg-[#ff9900]',
+	4: 'bg-[#ffcc00]',
+	5: 'bg-[#ffff00]',
+	6: 'bg-[#ccff00]',
+	7: 'bg-[#99ff00]',
+	8: 'bg-[#66ff00]',
+	9: 'bg-[#33ff00]',
+	10: 'bg-[#00ff00]',
 };
 
+/**
+ * Utility type to retrieve the keys of the COLORS constant.
+ */
 type ColorsKey = keyof typeof COLORS;
 
+/**
+ * Component wrapping the PercentageBar and displays a different color depending on
+ * the percentage filled.
+ */
 const PercentageMatchBar = (props: PercentageMatchBarProps) => {
 	const percentage = clamp(props.percentage, 0, 1);
 
