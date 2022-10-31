@@ -1,0 +1,6 @@
+/**
+ * Definition of the color scheme used inside the application
+ */
+export const COLOR_SCHEME = {
+	footerTextColor: 'text-[#6f6f6f]',
+} as const;
