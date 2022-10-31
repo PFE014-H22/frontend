@@ -1,22 +1,34 @@
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectProps } from '@mui/material/Select';
 import { SelectChangeEvent } from '@mui/material/Select/SelectInput';
 import { ReactNode, useCallback, useState } from 'react';
+import Option, { OptionProps } from './option/Option';
 
-export interface Option {
-	key: string;
-	value: string;
-}
-
+/**
+ * The props used to configure the dropdown component
+ */
 export interface DropdownProps {
+	/**
+	 * Placeholder to display when no option is selected in the dropdown.
+	 */
 	label?: string;
+
+	/**
+	 * Event listener when a new option is selected.
+	 */
 	onChange?: SelectProps<string>['onChange'];
-	options?: Option[];
+
+	/**
+	 * List of options that can be selected with the dropdown menu.
+	 */
+	options?: { key: string; value: string }[];
 }
 
-const Dropdown = ({ label, options, onChange, ...props }: DropdownProps) => {
+/**
+ * Component used to display a dropdown menu of different options.
+ */
+const Dropdown = ({ label, onChange, options }: DropdownProps) => {
 	const [value, setValue] = useState('');
 
 	const onSelectionChange = useCallback(
@@ -32,16 +44,9 @@ const Dropdown = ({ label, options, onChange, ...props }: DropdownProps) => {
 	return (
 		<FormControl fullWidth>
 			<InputLabel>{label}</InputLabel>
-			<Select
-				label={label}
-				value={value}
-				onChange={onSelectionChange}
-				{...props}
-			>
+			<Select label={label} value={value} onChange={onSelectionChange}>
 				{options?.map(option => (
-					<MenuItem key={option.key} value={option.key}>
-						{option.value}
-					</MenuItem>
+					<Option {...option}>{option.value}</Option>
 				))}
 			</Select>
 		</FormControl>
