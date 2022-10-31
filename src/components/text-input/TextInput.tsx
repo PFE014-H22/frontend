@@ -5,7 +5,7 @@ import { ClassAttributes, InputHTMLAttributes } from 'react';
  */
 export interface TextInputProps {
 	/**
-	 * The background color of the the text input.
+	 * The background color of the text input.
 	 * If provided, the color must either be a valid tailwind background color or a custom color in hexadecimal
 	 * You can read the tailwind docs (https://tailwindcss.com/docs/background-color) for more information.
 	 */
