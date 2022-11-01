@@ -1,4 +1,5 @@
-import { ClassAttributes, InputHTMLAttributes } from 'react';
+import { InputHTMLAttributes } from 'react';
+import { BackgroundColor, TextColor } from '../../types/colors';
 
 /**
  * The props used to configure the input text component.
@@ -6,13 +7,8 @@ import { ClassAttributes, InputHTMLAttributes } from 'react';
 export interface TextInputProps {
 	/**
 	 * The background color of the text input.
-	 * If provided, the color must either be a valid tailwind background color or a custom color in hexadecimal
-	 * You can read the tailwind docs (https://tailwindcss.com/docs/background-color) for more information.
 	 */
-	backgroundColor?:
-		| `bg-[#${string}]`
-		| `bg-${string}`
-		| `bg-${string}-${number}`;
+	backgroundColor?: BackgroundColor;
 
 	/**
 	 * The placeholder text to display when there is no text entered.
@@ -21,13 +17,8 @@ export interface TextInputProps {
 
 	/**
 	 * The color to display the input text with.
-	 * If provided, the color must either be a valid tailwind text color or a custom color in hexadecimal.
-	 * You can read the tailwind docs (https://tailwindcss.com/docs/text-color) for more information.
 	 */
-	textColor?:
-		| `text-[#${string}]`
-		| `text-${string}`
-		| `text-${string}-${number}`;
+	textColor?: TextColor;
 
 	/**
 	 * Attribute specifying the type of the input element.
@@ -46,7 +37,7 @@ const TextInput = ({
 }: TextInputProps) => {
 	return (
 		<input
-			className={`rounded-full ${backgroundColor} px-4 py-2 ${textColor} placeholder:text-red-400 max-w-[100%]`}
+			className={`rounded-full ${backgroundColor} px-4 py-2 ${textColor} max-w-[100%] placeholder:text-red-400`}
 			{...props}
 		/>
 	);

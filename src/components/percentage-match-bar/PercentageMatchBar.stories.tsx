@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { COLOR_SCHEME } from '../../styles/colors';
 import PercentageMatchBar from './PercentageMatchBar';
 
 export default {
@@ -7,7 +8,7 @@ export default {
 } as ComponentMeta<typeof PercentageMatchBar>;
 
 const Template: ComponentStory<typeof PercentageMatchBar> = args => (
-	<div className='max-w-xs'>
+	<div className="max-w-xs">
 		<PercentageMatchBar {...args} />
 	</div>
 );
@@ -15,4 +16,5 @@ const Template: ComponentStory<typeof PercentageMatchBar> = args => (
 export const Primary = Template.bind({});
 Primary.args = {
 	percentage: 0.5,
+	backgroundColor: COLOR_SCHEME.percentageBarBackgroundColor,
 };

@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { COLOR_SCHEME } from '../../styles/colors';
 import Footer from './Footer';
 
 export default {
@@ -9,4 +10,6 @@ export default {
 const Template: ComponentStory<typeof Footer> = args => <Footer {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = {};
+Primary.args = {
+	textColor: COLOR_SCHEME.footerTextColor,
+};

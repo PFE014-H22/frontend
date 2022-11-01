@@ -6,7 +6,7 @@ import { env } from '../../../env/server.mjs';
 /**
  * Schema defining the expected shape of the response
  * received from the server when asking for the
- * current supported techologies
+ * current supported techologies.
  */
 const dropdownChoicesSchema = z.object({
 	/**
@@ -20,7 +20,7 @@ const dropdownChoicesSchema = z.object({
 			key: z.string(),
 
 			/**
-			 * The display value of the technology
+			 * The display value of the technology.
 			 */
 			value: z.string(),
 		}),
@@ -32,7 +32,7 @@ const dropdownChoicesSchema = z.object({
  */
 export const technologiesRouter = router({
 	/**
-	 * Retrieve the current technologies supported by the backend server (GET /technologies)
+	 * Retrieve the current technologies supported by the backend server. (GET /technologies)
 	 */
 	dropdown: publicProcedure.query(async () => {
 		const { data } = await axios.get(`${env.PROXY_API}/technologies`);
@@ -40,7 +40,7 @@ export const technologiesRouter = router({
 	}),
 
 	/**
-	 * Mocks the implementation of the backend server (GET /technologies)
+	 * Mocks the implementation of the backend server. (GET /technologies)
 	 */
 	mockDropdown: publicProcedure.query(() => {
 		const data = {

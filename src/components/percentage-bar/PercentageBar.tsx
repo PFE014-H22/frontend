@@ -1,4 +1,5 @@
 import { clamp } from '../../lib/clamp';
+import { BackgroundColor } from '../../types/colors';
 
 /**
  * The props used to configure the percentage bar component.
@@ -6,20 +7,13 @@ import { clamp } from '../../lib/clamp';
 export interface PercentageBarProps {
 	/**
 	 * The background color of the percentage bar.
-	 * If provided, the color must either be a valid tailwind background color or a custom color in hexadecimal
-	 * You can read the tailwind docs (https://tailwindcss.com/docs/background-color) for more information.
 	 */
-	backgroundColor?:
-		| `bg-[#${string}]`
-		| `bg-${string}`
-		| `bg-${string}-${number}`;
+	backgroundColor?: BackgroundColor;
 
 	/**
-	 * Color of the filling bar. Defaults to bg-blue-500
-	 * If provided, the color must either be a valid tailwind background color or a custom color in hexadecimal
-	 * You can read the tailwind docs (https://tailwindcss.com/docs/background-color) for more information.
+	 * Color of the filling bar. Defaults to bg-blue-500.
 	 */
-	fillColor?: `bg-[#${string}]` | `bg-${string}` | `bg-${string}-${number}`;
+	fillColor?: BackgroundColor;
 
 	/**
 	 * Percentage of the bar to fill between 0 and 1.

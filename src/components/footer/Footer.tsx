@@ -1,18 +1,14 @@
 import Image from 'next/image';
+import { TextColor } from '../../types/colors';
 
 /**
- * The props used to configure the footer componenté
+ * The props used to configure the footer component.
  */
 export interface FooterProps {
 	/**
-	 * The color to display the link text with.
-	 * If provided, the color must either be a valid tailwind text color or a custom color in hexadecimal.
-	 * You can read the tailwind docs (https://tailwindcss.com/docs/text-color) for more information.
+	 * The color to display the footer text with.
 	 */
-	textColor?:
-		| `text-[#${string}]`
-		| `text-${string}`
-		| `text-${string}-${number}`;
+	textColor?: TextColor;
 }
 
 /**

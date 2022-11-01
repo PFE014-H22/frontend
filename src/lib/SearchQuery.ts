@@ -3,7 +3,7 @@ import { UrlObject } from 'url';
 const SEARCH_PAGE_PATH = '/search';
 
 /**
- * Class representation of the search query
+ * Class representation of the search query.
  */
 export class SearchQuery {
 	constructor(

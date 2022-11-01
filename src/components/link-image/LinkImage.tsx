@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 import { UrlObject } from 'url';
 
 /**
- * The props used to configure the LinkImage component
+ * The props used to configure the LinkImage component.
  */
 export interface LinkImageProps extends ImageProps {
 	/**
@@ -13,7 +13,7 @@ export interface LinkImageProps extends ImageProps {
 	children?: ReactNode;
 
 	/**
-	 * The href attribute of the link
+	 * The href attribute of the link.
 	 */
 	href: UrlObject | string;
 }

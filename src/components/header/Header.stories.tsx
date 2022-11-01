@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { COLOR_SCHEME } from '../../styles/colors';
 import Header from './Header';
 
 export default {
@@ -9,4 +10,7 @@ export default {
 const Template: ComponentStory<typeof Header> = args => <Header {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = {};
+Primary.args = {
+	selectedBackgroundColor: COLOR_SCHEME.headerLinkSelectedColor,
+	textColor: COLOR_SCHEME.headerLinkTextColor,
+};

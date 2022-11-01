@@ -2,37 +2,31 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { ReactNode, useMemo } from 'react';
 import { UrlObject } from 'url';
+import { BackgroundColor, TextColor } from '../../../types/colors';
 
 /**
- * The props used to configure the navigation links of the header component
+ * The props used to configure the navigation links of the header component.
  */
 export interface LinkProps {
 	/**
-	 * The content to show inside the link
+	 * The content to show inside the link.
 	 */
 	children?: ReactNode;
 
 	/**
-	 * The href attribute of the link
+	 * The href attribute of the link.
 	 */
 	href: string | UrlObject;
 
 	/**
-	 * The color to highlight the link with when the current route matches the href attribute
-	 * If provided, the color must either be a valid tailwind background color or a custom color in hexadecimal
-	 * You can read the tailwind docs (https://tailwindcss.com/docs/background-color) for more information.
+	 * The color to highlight the link with when the current route matches the href attribute.
 	 */
-	selectedBackgroundColor?:
-		| `bg-[#${string}]`
-		| `bg-${string}`
-		| `bg-${string}-${number}`;
+	selectedBackgroundColor?: BackgroundColor;
 
 	/**
-	 * The color to display the link text with. If provided, the color must either be a valid tailwind text color
-	 * or a custom color in hexadecimal.
-	 * You can read the tailwind docs (https://tailwindcss.com/docs/text-color) for more information.
+	 * The color to display the link text with.
 	 */
-	textColor?: `text-[#${string}]` | `text-${string}` |`text-${string}-${number}`;
+	textColor?: TextColor;
 }
 
 /**

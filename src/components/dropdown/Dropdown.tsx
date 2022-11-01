@@ -6,7 +6,7 @@ import { ReactNode, useCallback, useState } from 'react';
 import Option, { OptionProps } from './option/Option';
 
 /**
- * The props used to configure the dropdown component
+ * The props used to configure the dropdown component.
  */
 export interface DropdownProps {
 	/**

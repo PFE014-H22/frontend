@@ -1,7 +1,7 @@
 import Link, { LinkProps } from './link/Link';
 
 /**
- * The props used to configure the header component
+ * The props used to configure the header component.
  */
 export interface HeaderProps extends Omit<LinkProps, 'children' | 'href'> {}
 

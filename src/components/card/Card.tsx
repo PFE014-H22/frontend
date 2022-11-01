@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { BackgroundColor } from '../../types/colors';
 
 /**
  * The props used to configure the the card component.
@@ -6,16 +7,11 @@ import { ReactNode } from 'react';
 export interface CardProps {
 	/**
 	 * The background color of the card.
-	 * If provided, the color must either be a valid tailwind background color or a custom color in hexadecimal
-	 * You can read the tailwind docs (https://tailwindcss.com/docs/background-color) for more information.
 	 */
-	backgroundColor?:
-		| `bg-[#${string}]`
-		| `bg-${string}`
-		| `bg-${string}-${number}`;
+	backgroundColor?: BackgroundColor;
 
 	/**
-	 * The content to show inside the card
+	 * The content to show inside the card.
 	 */
 	children: ReactNode;
 }

@@ -8,7 +8,7 @@ import PercentageBar, {
  * The props used to configure the percentage match bar component.
  */
 export interface PercentageMatchBarProps
-	extends Omit<PercentageBarProps, 'color'> {}
+	extends Omit<PercentageBarProps, 'fillColor'> {}
 
 /**
  * Shades of color to use as a gradient for the percentage match bar.
@@ -47,7 +47,7 @@ const PercentageMatchBar = (props: PercentageMatchBarProps) => {
 		return COLORS[Math.round(percentage * 10) as ColorsKey];
 	}, [percentage]);
 
-	return <PercentageBar color={getPercentageMatchBarColor()} {...props} />;
+	return <PercentageBar fillColor={getPercentageMatchBarColor()} {...props} />;
 };
 
 export default PercentageMatchBar;
