@@ -1,22 +1,18 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { FormEvent, useCallback, useRef, useState } from 'react';
-import { trpc } from '../utils/trpc';
-import { SearchResponse } from '../server/trpc/router/search';
+import { FormEvent, useCallback, useRef } from 'react';
+import { useRouter } from 'next/router';
+import { SearchQuery } from '../lib/SearchQuery';
 
 const Home: NextPage = () => {
-	const [answers, setAnswers] = useState<SearchResponse['answers']>([]);
-	const searchMutation = trpc.search.stackoverflow.useMutation();
-
+	const router = useRouter();
 	const searchRef = useRef<HTMLInputElement>(null);
 
 	const onFormSubmit = useCallback(async (e: FormEvent) => {
 		e.preventDefault();
 		if (!searchRef.current) return;
-		const { answers } = await searchMutation.mutateAsync({
-			searchTerm: searchRef.current.value,
-		});
-		setAnswers(answers);
+		const searchQuery = new SearchQuery(searchRef.current.value);
+		router.push(searchQuery.getUrl());
 	}, []);
 
 	return (
@@ -27,7 +23,7 @@ const Home: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<main className="container mx-auto flex min-h-screen flex-col gap-2 p-4">
+			<main>
 				<form onSubmit={onFormSubmit} className="flex gap-2">
 					<input
 						type="text"
@@ -42,30 +38,6 @@ const Home: NextPage = () => {
 						Submit
 					</button>
 				</form>
-
-				<table className="table-auto border-separate border-spacing-2 border border-slate-400">
-					<thead>
-						<tr>
-							<th>question_id</th>
-							<th>answer_id</th>
-							<th>is_accepted</th>
-							<th>similarity_score</th>
-							<th>link</th>
-						</tr>
-					</thead>
-
-					<tbody>
-						{answers.map(answer => (
-							<tr key={answer.answer_id}>
-								<th>{answer.question_id}</th>
-								<th>{answer.answer_id}</th>
-								<th>{`${answer.is_accepted}`}</th>
-								<th>{answer.similarity_score}</th>
-								<th>{answer.link}</th>
-							</tr>
-						))}
-					</tbody>
-				</table>
 			</main>
 		</>
 	);
