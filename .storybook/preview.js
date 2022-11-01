@@ -1,5 +1,6 @@
 import '../src/styles/globals.css';
 import NextImage from 'next/image';
+import { RouterContext } from 'next/dist/shared/lib/router-context';
 
 const OriginalNextImage = NextImage.default;
 
@@ -15,5 +16,8 @@ export const parameters = {
 			color: /(background|color)$/i,
 			date: /Date$/,
 		},
+	},
+	nextRouter: {
+		Provider: RouterContext.Provider,
 	},
 };
