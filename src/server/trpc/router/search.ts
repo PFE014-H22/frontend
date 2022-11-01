@@ -21,7 +21,7 @@ export type SearchResponse = z.infer<typeof searchSchema>;
 export const searchRouter = router({
 	stackoverflow: publicProcedure
 		.input(z.object({ searchTerm: z.string() }))
-		.mutation(async ({ input }) => {
+		.query(async ({ input }) => {
 			const { data } = await axios.get(`${env.PROXY_API}/search`, {
 				params: {
 					q: input.searchTerm,
@@ -31,7 +31,7 @@ export const searchRouter = router({
 		}),
 	mockStackoverflow: publicProcedure
 		.input(z.object({ searchTerm: z.string() }))
-		.mutation(async () => {
+		.query(async ({ input }) => {
 			return {
 				answers: [
 					{
@@ -105,7 +105,7 @@ export const searchRouter = router({
 						similarity_score: 0.24033255603967932,
 					},
 				],
-				query: 'Connection issues',
+				query: input.searchTerm,
 			};
 		}),
 });
