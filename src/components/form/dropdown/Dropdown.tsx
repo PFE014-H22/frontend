@@ -3,12 +3,18 @@ import InputLabel from '@mui/material/InputLabel';
 import Select, { SelectProps } from '@mui/material/Select';
 import { SelectChangeEvent } from '@mui/material/Select/SelectInput';
 import { ReactNode, useCallback, useState } from 'react';
+import { BorderRadius } from '../../../types/border-radius';
 import Option, { OptionProps } from './option/Option';
 
 /**
  * The props used to configure the dropdown component.
  */
 export interface DropdownProps {
+	/**
+	 * Html select element border-radius.
+	 */
+	borderRadius?: BorderRadius;
+
 	/**
 	 * Id of the html select element.
 	 */
@@ -66,6 +72,7 @@ const Dropdown = ({
 		<FormControl fullWidth>
 			<InputLabel>{label}</InputLabel>
 			<Select
+				className={`${borderRadius}`}
 				label={label}
 				value={value}
 				onChange={onSelectionChange}
