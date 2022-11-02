@@ -31,7 +31,7 @@ const LinkImage = ({ children, href, ...props }: LinkImageProps) => {
 			</Link>
 
 			{children && (
-				<figcaption className="text-base font-normal">
+				<figcaption className="text-center text-base font-medium">
 					{children}
 				</figcaption>
 			)}
