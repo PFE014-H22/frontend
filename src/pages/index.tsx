@@ -2,6 +2,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { SelectChangeEvent } from '@mui/material';
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { ChangeEvent, FormEvent, useCallback, useState } from 'react';
 import Button from '../components/common/button/Button';
@@ -10,12 +11,18 @@ import TextInput from '../components/form/text-input/TextInput';
 import { SearchQuery } from '../lib/SearchQuery';
 import { trpc } from '../utils/trpc';
 
+/**
+ * Component display the homepage of the application.
+ */
 const HomePage: NextPage = () => {
 	const router = useRouter();
 	const { data } = trpc.technologies.mockDropdown.useQuery();
 	const [searchText, setSearchText] = useState('');
 	const [technology, setTechnology] = useState('');
 
+	/**
+	 * Callback when the form is submitted.
+	 */
 	const onFormSubmit = useCallback(
 		async (e: FormEvent<HTMLFormElement>) => {
 			e.preventDefault();
@@ -32,6 +39,9 @@ const HomePage: NextPage = () => {
 		[router, searchText, technology],
 	);
 
+	/**
+	 * Callback when a text value is typed.
+	 */
 	const onSearchTextChange = useCallback(
 		(e: ChangeEvent<HTMLInputElement>) => {
 			setSearchText(e.target.value);
@@ -39,6 +49,9 @@ const HomePage: NextPage = () => {
 		[],
 	);
 
+	/**
+	 * Callback when a new techology is selected.
+	 */
 	const onTechnologyChange = useCallback((e: SelectChangeEvent<string>) => {
 		setTechnology(e.target.value);
 	}, []);
@@ -52,7 +65,11 @@ const HomePage: NextPage = () => {
 			</Head>
 
 			<div className="container mx-auto flex max-w-2xl flex-1 flex-col justify-center">
-				<div className="flex justify-center">Logo</div>
+				<div className='flex items-center justify-center mb-4'>
+					<div className="relative h-32 w-96">
+						<Image src="/dopamine.svg" layout="fill" />
+					</div>
+				</div>
 
 				<main className="w-full">
 					<section>
