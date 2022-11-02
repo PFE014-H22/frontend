@@ -12,7 +12,7 @@ import { trpc } from '../utils/trpc';
 
 const HomePage: NextPage = () => {
 	const router = useRouter();
-	const { data } = trpc.technologies.dropdown.useQuery();
+	const { data } = trpc.technologies.mockDropdown.useQuery();
 	const [searchText, setSearchText] = useState('');
 	const [technology, setTechnology] = useState('');
 

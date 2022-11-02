@@ -11,6 +11,10 @@ export class SearchQuery {
 		 * The term searched for by the user.
 		 */
 		private searchTerm: string,
+		/**
+		 * The technology requested by the user.
+		 */
+		private technology: string,
 	) {}
 
 	/**
@@ -21,6 +25,7 @@ export class SearchQuery {
 			pathname: SEARCH_PAGE_PATH,
 			query: {
 				q: encodeURIComponent(this.searchTerm),
+				t: encodeURIComponent(this.technology),
 			},
 		};
 	}
