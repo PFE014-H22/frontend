@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import { TextColor } from '../../types/colors';
+import { COLOR_SCHEME } from '../../../styles/colors';
+import { TextColor } from '../../../types/colors';
 
 /**
  * The props used to configure the footer component.
@@ -14,11 +15,11 @@ export interface FooterProps {
 /**
  * Component used to display a common footer for each page.
  */
-const Footer = ({ textColor }: FooterProps) => {
+const Footer = ({ textColor = COLOR_SCHEME.footerTextColor }: FooterProps) => {
 	return (
 		<footer className="flex flex-row items-center justify-center gap-2">
-			<Image src="/Logo_ETS.jpg" width={48} height={48} />
-			<p className={`text-2xl font-normal leading-7 ${textColor}`}>
+			<Image src="/Logo_ETS.png" width={48} height={48} />
+			<p className={`text-2xl leading-7 ${textColor}`}>
 				École de technologie supérieure, 2022
 			</p>
 		</footer>
