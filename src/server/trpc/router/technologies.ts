@@ -1,7 +1,7 @@
-import { router, publicProcedure } from '../trpc';
-import { z } from 'zod';
 import axios from 'axios';
+import { z } from 'zod';
 import { env } from '../../../env/server.mjs';
+import { publicProcedure, router } from '../trpc';
 
 /**
  * Schema defining the expected shape of the response
@@ -26,6 +26,11 @@ const dropdownChoicesSchema = z.object({
 		}),
 	),
 });
+
+/**
+ * Infered return type from the dropdownChoices schema.
+ */
+export type DropdownChoicesResponse = z.infer<typeof dropdownChoicesSchema>;
 
 /**
  * Trpc router to encapsulate the network requests to the current supported techologies.
