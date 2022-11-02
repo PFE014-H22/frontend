@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { COLOR_SCHEME } from '../../../styles/colors';
+import { BorderRadius } from '../../../types/border-radius';
 import { BackgroundColor } from '../../../types/colors';
 
 /**
@@ -12,6 +13,11 @@ export interface CardProps {
 	backgroundColor?: BackgroundColor;
 
 	/**
+	 * The border radius of the card.
+	 */
+	borderRadius?: BorderRadius;
+
+	/**
 	 * The content to show inside the card.
 	 */
 	children: ReactNode;
@@ -22,11 +28,12 @@ export interface CardProps {
  */
 const Card = ({
 	backgroundColor = COLOR_SCHEME.cardBackgroundColor,
+	borderRadius = 'rounded-2xl',
 	children,
 }: CardProps) => {
 	return (
 		<div
-			className={`${backgroundColor} max-w-fit rounded-2xl  px-9 py-6 shadow-[4px_4px_10px_rgba(0,0,0,0.25)]`}
+			className={`${backgroundColor} w-full ${borderRadius} px-9 py-6 shadow-[4px_4px_10px_rgba(0,0,0,0.25)]`}
 		>
 			{children}
 		</div>
