@@ -1,5 +1,6 @@
 import { HTMLAttributes, InputHTMLAttributes } from 'react';
 import { COLOR_SCHEME } from '../../../styles/colors';
+import { BorderRadius } from '../../../types/border-radius';
 import {
 	BackgroundColor,
 	PlaceholderColor,
@@ -14,6 +15,11 @@ export interface TextInputProps {
 	 * The background color of the text input.
 	 */
 	backgroundColor?: BackgroundColor;
+
+	/**
+	 * The border radius of the text input.
+	 */
+	borderRadius?: BorderRadius;
 
 	/**
 	 * Id of the html select element.
@@ -62,13 +68,14 @@ export interface TextInputProps {
  */
 const TextInput = ({
 	backgroundColor = COLOR_SCHEME.textInputBackgroundColor,
+	borderRadius = 'rounded-full',
 	placeholderColor = COLOR_SCHEME.textInputPlaceHolderTextColor,
 	textColor = COLOR_SCHEME.textInputTextColor,
 	...props
 }: TextInputProps) => {
 	return (
 		<input
-			className={`rounded-full ${backgroundColor} px-4 py-2 ${textColor} max-w-[100%] ${placeholderColor}`}
+			className={`${borderRadius} ${backgroundColor} px-4 py-2 ${textColor} max-w-[100%] ${placeholderColor}`}
 			{...props}
 		/>
 	);
