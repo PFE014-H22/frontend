@@ -10,5 +10,6 @@ export const COLOR_SCHEME = {
 	headerLinkTextColor: 'text-black',
 	percentageBarBackgroundColor: 'bg-[#B1B1B1]',
 	textInputBackgroundColor: 'bg-[#c5c5c5]',
+	textInputPlaceHolderTextColor: 'placeholder:text-black',
 	textInputTextColor: 'text-black',
 } as const;
