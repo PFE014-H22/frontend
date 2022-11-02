@@ -7,6 +7,8 @@ export type BackgroundColor =
 	| `bg-${string}`
 	| `bg-${string}-${number}`;
 
+export type PlaceholderColor = `placeholder:${TextColor}`;
+
 /**
  * Must either be a valid tailwind text color or a custom color in hexadecimal.
  * You can read the tailwind docs (https://tailwindcss.com/docs/text-color) for more information.

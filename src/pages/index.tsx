@@ -1,18 +1,59 @@
+import SearchIcon from '@mui/icons-material/Search';
+import { SelectChangeEvent } from '@mui/material';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { FormEvent, useCallback, useRef } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { ChangeEvent, FormEvent, useCallback, useState } from 'react';
+import Button from '../components/common/button/Button';
+import Dropdown from '../components/form/dropdown/Dropdown';
+import TextInput from '../components/form/text-input/TextInput';
 import { SearchQuery } from '../lib/SearchQuery';
+import { trpc } from '../utils/trpc';
 
-const Home: NextPage = () => {
+/**
+ * Component display the homepage of the application.
+ */
+const HomePage: NextPage = () => {
 	const router = useRouter();
-	const searchRef = useRef<HTMLInputElement>(null);
+	const { data } = trpc.technologies.mockDropdown.useQuery();
+	const [searchText, setSearchText] = useState('');
+	const [technology, setTechnology] = useState('');
 
-	const onFormSubmit = useCallback(async (e: FormEvent) => {
-		e.preventDefault();
-		if (!searchRef.current) return;
-		const searchQuery = new SearchQuery(searchRef.current.value);
-		router.push(searchQuery.getUrl());
+	/**
+	 * Callback when the form is submitted.
+	 */
+	const onFormSubmit = useCallback(
+		async (e: FormEvent<HTMLFormElement>) => {
+			e.preventDefault();
+			const trimmedSearchText = searchText.trim();
+			const trimmedTechnology = technology.trim();
+			if (!trimmedSearchText) return;
+			if (!trimmedTechnology) return;
+			const searchQuery = new SearchQuery(
+				trimmedSearchText,
+				trimmedTechnology,
+			);
+			router.push(searchQuery.getUrl());
+		},
+		[router, searchText, technology],
+	);
+
+	/**
+	 * Callback when a text value is typed.
+	 */
+	const onSearchTextChange = useCallback(
+		(e: ChangeEvent<HTMLInputElement>) => {
+			setSearchText(e.target.value);
+		},
+		[],
+	);
+
+	/**
+	 * Callback when a new techology is selected.
+	 */
+	const onTechnologyChange = useCallback((e: SelectChangeEvent<string>) => {
+		setTechnology(e.target.value);
 	}, []);
 
 	return (
@@ -23,24 +64,51 @@ const Home: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<main>
-				<form onSubmit={onFormSubmit} className="flex gap-2">
-					<input
-						type="text"
-						placeholder="Search..."
-						className="border-2 border-gray-400 px-2"
-						ref={searchRef}
-					/>
-					<button
-						type="submit"
-						className="border-1 rounded-2xl bg-[#83A5FF] px-4 py-2 text-white"
-					>
-						Submit
-					</button>
-				</form>
-			</main>
+			<div className="container mx-auto flex max-w-2xl flex-1 flex-col justify-center">
+				<div className='flex items-center justify-center mb-4'>
+					<div className="relative h-32 w-96">
+						<Image src="/dopamine.svg" layout="fill" />
+					</div>
+				</div>
+
+				<main className="w-full">
+					<section>
+						<form
+							onSubmit={onFormSubmit}
+							className="flex flex-col gap-4"
+						>
+							<TextInput
+								name="search"
+								onChange={onSearchTextChange}
+								placeholder="Search..."
+								required
+								type="text"
+							/>
+
+							<div className="flex flex-row flex-wrap justify-center gap-2">
+								<div className="max-w-[16rem] flex-1">
+									<Dropdown
+										label="Technology"
+										name="technology"
+										onChange={onTechnologyChange}
+										options={data?.technologies}
+										required
+									/>
+								</div>
+
+								<Button
+									borderRadius="rounded-full"
+									type="submit"
+								>
+									<SearchIcon />
+								</Button>
+							</div>
+						</form>
+					</section>
+				</main>
+			</div>
 		</>
 	);
 };
 
-export default Home;
+export default HomePage;
