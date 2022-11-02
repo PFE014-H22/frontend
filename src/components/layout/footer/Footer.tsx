@@ -24,7 +24,7 @@ const Footer = ({ textColor = COLOR_SCHEME.footerTextColor }: FooterProps) => {
 				height={48}
 				alt="Logo de l'École de Technologie Supérieure"
 			/>
-			<p className={`text-2xl leading-7 ${textColor}`}>
+			<p className={`text-sm leading-7 ${textColor}`}>
 				École de technologie supérieure, 2022
 			</p>
 		</footer>
