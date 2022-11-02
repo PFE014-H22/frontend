@@ -1,5 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { COLOR_SCHEME } from '../../styles/colors';
 import PercentageBar from './PercentageBar';
 
 export default {
@@ -15,7 +14,5 @@ const Template: ComponentStory<typeof PercentageBar> = args => (
 
 export const Primary = Template.bind({});
 Primary.args = {
-	backgroundColor: COLOR_SCHEME.percentageBarBackgroundColor,
-	fillColor: 'bg-blue-500',
 	percentage: 0.5,
 };

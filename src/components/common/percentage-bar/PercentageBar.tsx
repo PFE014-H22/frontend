@@ -1,5 +1,6 @@
-import { clamp } from '../../lib/clamp';
-import { BackgroundColor } from '../../types/colors';
+import { clamp } from '../../../lib/clamp';
+import { COLOR_SCHEME } from '../../../styles/colors';
+import { BackgroundColor } from '../../../types/colors';
 
 /**
  * The props used to configure the percentage bar component.
@@ -11,7 +12,7 @@ export interface PercentageBarProps {
 	backgroundColor?: BackgroundColor;
 
 	/**
-	 * Color of the filling bar. Defaults to bg-blue-500.
+	 * Color of the filling bar.
 	 */
 	fillColor?: BackgroundColor;
 
@@ -25,8 +26,8 @@ export interface PercentageBarProps {
  * Component used to represent a percentage in a bar format.
  */
 const PercentageBar = ({
-	backgroundColor,
-	fillColor = 'bg-blue-500',
+	backgroundColor = COLOR_SCHEME.percentageBarBackgroundColor,
+	fillColor = COLOR_SCHEME.percentageBarFillColor,
 	percentage,
 }: PercentageBarProps) => {
 	percentage = clamp(percentage, 0, 1);
