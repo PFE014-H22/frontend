@@ -65,7 +65,7 @@ const Dropdown = ({
 			if (onChange === undefined) return;
 			onChange(e, child);
 		},
-		[],
+		[onChange],
 	);
 
 	return (
@@ -78,8 +78,10 @@ const Dropdown = ({
 				onChange={onSelectionChange}
 				{...props}
 			>
-				{options?.map(option => (
-					<Option {...option}>{option.value}</Option>
+				{options?.map(({ key, ...option }) => (
+					<Option key={key} {...option}>
+						{option.value}
+					</Option>
 				))}
 			</Select>
 		</FormControl>

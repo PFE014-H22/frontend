@@ -44,7 +44,7 @@ const Link = ({
 	const backgroundColor = useMemo(() => {
 		if (isSelected) return selectedBackgroundColor;
 		return '';
-	}, [isSelected]);
+	}, [isSelected, selectedBackgroundColor]);
 
 	return (
 		<li className="list-none">

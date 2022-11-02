@@ -7,7 +7,7 @@ export const useSelectedRoutes = (hrefs: (string | UrlObject)[]) => {
 
 	const isSelected = useMemo(() => {
 		return hrefs.includes(pathname);
-	}, [pathname]);
+	}, [hrefs, pathname]);
 
 	return {
 		isSelected,

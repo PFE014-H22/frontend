@@ -8,6 +8,11 @@ import { UrlObject } from 'url';
  */
 export interface LinkImageProps extends ImageProps {
 	/**
+	 * Alternative text to display if the image cannot load properly.
+	 */
+	alt: ImageProps['alt'];
+
+	/**
 	 * The optional text to show under the image.
 	 */
 	children?: ReactNode;
@@ -21,12 +26,12 @@ export interface LinkImageProps extends ImageProps {
 /**
  * Component used to display a navigation link inside an image.
  */
-const LinkImage = ({ children, href, ...props }: LinkImageProps) => {
+const LinkImage = ({ alt, children, href, ...props }: LinkImageProps) => {
 	return (
 		<div className="flex flex-col items-center">
 			<Link href={href} passHref>
 				<a target="_blank" rel="noopener noreferrer">
-					<Image {...props} />
+					<Image alt={alt} {...props} />
 				</a>
 			</Link>
 

@@ -29,7 +29,7 @@ const HomePage: NextPage = () => {
 			);
 			router.push(searchQuery.getUrl());
 		},
-		[searchText, technology],
+		[router, searchText, technology],
 	);
 
 	const onSearchTextChange = useCallback(

@@ -18,7 +18,12 @@ export interface FooterProps {
 const Footer = ({ textColor = COLOR_SCHEME.footerTextColor }: FooterProps) => {
 	return (
 		<footer className="flex flex-row items-center justify-center gap-2">
-			<Image src="/Logo_ETS.png" width={48} height={48} />
+			<Image
+				src="/Logo_ETS.png"
+				width={48}
+				height={48}
+				alt="Logo de l'École de Technologie Supérieure"
+			/>
 			<p className={`text-2xl leading-7 ${textColor}`}>
 				École de technologie supérieure, 2022
 			</p>
