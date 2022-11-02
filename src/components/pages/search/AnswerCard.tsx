@@ -29,17 +29,17 @@ export interface AnswerCardProps {
  */
 const AnswerCard = ({ answer, searchTerm, technology }: AnswerCardProps) => {
 	const detailsHref = useMemo(() => {
-		let url = `/search/details/${answer.answer_id}`;
+		let url = `/search/details/${encodeURIComponent(answer.parameter)}`;
 		url += `?q=${encodeURIComponent(searchTerm)}`;
 		url += `&t=${encodeURIComponent(technology)}`;
 		return url;
-	}, [answer.answer_id, searchTerm, technology]);
+	}, [answer.id, searchTerm, technology]);
 
 	return (
 		<Card>
 			<Link href={detailsHref} passHref>
 				<a className="text-2xl font-semibold underline">
-					{answer.parameters[0] ?? 'Parameter'}
+					{answer.parameter}
 				</a>
 			</Link>
 
@@ -53,7 +53,9 @@ const AnswerCard = ({ answer, searchTerm, technology }: AnswerCardProps) => {
 				</div>
 
 				<div className="col-span-3 flex flex-col flex-wrap gap-2 text-[#6f6f6f]">
-					<span className="self-end text-center">xx matches</span>
+					<span className="self-end text-center">
+						{answer.matches} match(s)
+					</span>
 
 					<div className="flex flex-1 flex-wrap-reverse items-center justify-center gap-2 sm:flex-nowrap">
 						<span className="self-end">

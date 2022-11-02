@@ -13,15 +13,23 @@ const searchSchema = z.object({
 	 */
 	answers: z.array(
 		z.object({
-			answer_id: z.number(),
-			body: z.string(),
-			is_accepted: z.boolean(),
-			link: z.string(),
-			parameters: z.array(z.string()),
-			question_id: z.string(),
+			id: z.string(),
+			parameter: z.string(),
 			similarity_score: z.number(),
-			source: z.string(),
-			tags: z.array(z.string()),
+			matches: z.number(),
+			sources: z.array(
+				z.object({
+					link: z.string(),
+					name: z.enum(['stackoverflow']),
+					moreDetails: z.object({
+						answer_id: z.number(),
+						question_id: z.string(),
+						body: z.string(),
+						is_accepted: z.boolean(),
+						tags: z.array(z.string()),
+					}),
+				}),
+			),
 		}),
 	),
 	/**
@@ -51,7 +59,8 @@ export const searchRouter = router({
 		.query(async ({ input }) => {
 			const { data } = await axios.get(`${env.PROXY_API}/search`, {
 				params: {
-					q: input.searchTerm,
+					q: encodeURIComponent(input.searchTerm),
+					t: encodeURIComponent(input.technology),
 				},
 			});
 			return searchSchema.parse(data);
@@ -62,121 +71,31 @@ export const searchRouter = router({
 	mockStackoverflow: publicProcedure
 		.input(z.object({ searchTerm: z.string(), technology: z.string() }))
 		.query(async ({ input }) => {
-			return {
-				answers: [
+			const obj = {
+				parameter: 'Some parameter',
+				similarity_score: 0.21544325589298968,
+				id: '1',
+				matches: 3,
+				sources: [
 					{
-						answer_id: 8705014,
-						body: '<p>Take a look at the following:</p>\n\n<p><a href="https://github.com/winglian/SSTable2S3" rel="nofollow">https://github.com/winglian/SSTable2S3</a></p>\n',
-						is_accepted: true,
 						link: 'https://stackoverflow.com/questions/8703370/does-any-way-to-automate-snaphot-processing-for-cassandra-on-the-aws/8705014#8705014',
-						parameters: [],
-						question_id: '8703370',
-						similarity_score: 0.21544325589298968,
-						source: 'stackoverflow',
-						tags: ['cassandra'],
-					},
-					{
-						answer_id: 8705014,
-						body: '<p>Take a look at the following:</p>\n\n<p><a href="https://github.com/winglian/SSTable2S3" rel="nofollow">https://github.com/winglian/SSTable2S3</a></p>\n',
-						is_accepted: true,
-						link: 'https://stackoverflow.com/questions/8703370/does-any-way-to-automate-snaphot-processing-for-cassandra-on-the-aws/8705014#8705014',
-						parameters: [],
-						question_id: '8703370',
-						similarity_score: 0.21544325589298968,
-						source: 'stackoverflow',
-						tags: ['cassandra'],
-					},
-					{
-						answer_id: 8705014,
-						body: '<p>Take a look at the following:</p>\n\n<p><a href="https://github.com/winglian/SSTable2S3" rel="nofollow">https://github.com/winglian/SSTable2S3</a></p>\n',
-						is_accepted: true,
-						link: 'https://stackoverflow.com/questions/8703370/does-any-way-to-automate-snaphot-processing-for-cassandra-on-the-aws/8705014#8705014',
-						parameters: [],
-						question_id: '8703370',
-						similarity_score: 0.21544325589298968,
-						source: 'stackoverflow',
-						tags: ['cassandra'],
-					},
-					{
-						answer_id: 8705014,
-						body: '<p>Take a look at the following:</p>\n\n<p><a href="https://github.com/winglian/SSTable2S3" rel="nofollow">https://github.com/winglian/SSTable2S3</a></p>\n',
-						is_accepted: true,
-						link: 'https://stackoverflow.com/questions/8703370/does-any-way-to-automate-snaphot-processing-for-cassandra-on-the-aws/8705014#8705014',
-						parameters: [],
-						question_id: '8703370',
-						similarity_score: 0.21544325589298968,
-						source: 'stackoverflow',
-						tags: ['cassandra'],
-					},
-					{
-						answer_id: 8705014,
-						body: '<p>Take a look at the following:</p>\n\n<p><a href="https://github.com/winglian/SSTable2S3" rel="nofollow">https://github.com/winglian/SSTable2S3</a></p>\n',
-						is_accepted: true,
-						link: 'https://stackoverflow.com/questions/8703370/does-any-way-to-automate-snaphot-processing-for-cassandra-on-the-aws/8705014#8705014',
-						parameters: [],
-						question_id: '8703370',
-						similarity_score: 0.21544325589298968,
-						source: 'stackoverflow',
-						tags: ['cassandra'],
-					},
-					{
-						answer_id: 8705014,
-						body: '<p>Take a look at the following:</p>\n\n<p><a href="https://github.com/winglian/SSTable2S3" rel="nofollow">https://github.com/winglian/SSTable2S3</a></p>\n',
-						is_accepted: true,
-						link: 'https://stackoverflow.com/questions/8703370/does-any-way-to-automate-snaphot-processing-for-cassandra-on-the-aws/8705014#8705014',
-						parameters: [],
-						question_id: '8703370',
-						similarity_score: 0.21544325589298968,
-						source: 'stackoverflow',
-						tags: ['cassandra'],
-					},
-					{
-						answer_id: 8705014,
-						body: '<p>Take a look at the following:</p>\n\n<p><a href="https://github.com/winglian/SSTable2S3" rel="nofollow">https://github.com/winglian/SSTable2S3</a></p>\n',
-						is_accepted: true,
-						link: 'https://stackoverflow.com/questions/8703370/does-any-way-to-automate-snaphot-processing-for-cassandra-on-the-aws/8705014#8705014',
-						parameters: [],
-						question_id: '8703370',
-						similarity_score: 0.21544325589298968,
-						source: 'stackoverflow',
-						tags: ['cassandra'],
-					},
-					{
-						answer_id: 8705014,
-						body: '<p>Take a look at the following:</p>\n\n<p><a href="https://github.com/winglian/SSTable2S3" rel="nofollow">https://github.com/winglian/SSTable2S3</a></p>\n',
-						is_accepted: true,
-						link: 'https://stackoverflow.com/questions/8703370/does-any-way-to-automate-snaphot-processing-for-cassandra-on-the-aws/8705014#8705014',
-						parameters: [],
-						question_id: '8703370',
-						similarity_score: 0.21544325589298968,
-						source: 'stackoverflow',
-						tags: ['cassandra'],
-					},
-					{
-						answer_id: 8705014,
-						body: '<p>Take a look at the following:</p>\n\n<p><a href="https://github.com/winglian/SSTable2S3" rel="nofollow">https://github.com/winglian/SSTable2S3</a></p>\n',
-						is_accepted: true,
-						link: 'https://stackoverflow.com/questions/8703370/does-any-way-to-automate-snaphot-processing-for-cassandra-on-the-aws/8705014#8705014',
-						parameters: [],
-						question_id: '8703370',
-						similarity_score: 0.21544325589298968,
-						source: 'stackoverflow',
-						tags: ['cassandra'],
-					},
-					{
-						answer_id: 8705014,
-						body: '<p>Take a look at the following:</p>\n\n<p><a href="https://github.com/winglian/SSTable2S3" rel="nofollow">https://github.com/winglian/SSTable2S3</a></p>\n',
-						is_accepted: true,
-						link: 'https://stackoverflow.com/questions/8703370/does-any-way-to-automate-snaphot-processing-for-cassandra-on-the-aws/8705014#8705014',
-						parameters: [],
-						question_id: '8703370',
-						similarity_score: 0.21544325589298968,
-						source: 'stackoverflow',
-						tags: ['cassandra'],
+						name: 'stackoverflow',
+						moreDetails: {
+							answer_id: 8705014,
+							question_id: '8703370',
+							body: '<p>Take a look at the following:</p>\n\n<p><a href="https://github.com/winglian/SSTable2S3" rel="nofollow">https://github.com/winglian/SSTable2S3</a></p>\n',
+							is_accepted: true,
+							tags: ['cassandra'],
+						},
 					},
 				],
+			};
+			const data = {
+				answers: [obj, obj, obj, obj, obj, obj, obj, obj, obj, obj],
 				query: input.searchTerm,
 				technology: input.technology,
 			};
+
+			return searchSchema.parse(data);
 		}),
 });

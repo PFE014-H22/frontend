@@ -22,7 +22,7 @@ export interface SearchPageProps {
  * Maps to the `/search` endpoint.
  */
 const SearchPage: NextPage<SearchPageProps> = ({ q, t }) => {
-	const { data } = trpc.search.stackoverflow.useQuery({
+	const { data } = trpc.search.mockStackoverflow.useQuery({
 		searchTerm: q as string,
 		technology: t as string,
 	});
@@ -37,7 +37,7 @@ const SearchPage: NextPage<SearchPageProps> = ({ q, t }) => {
 						<div className="my-4 flex flex-col items-center justify-center gap-8">
 							{data?.answers.map(answer => (
 								<AnswerCard
-									key={answer.answer_id}
+									key={answer.id}
 									answer={answer}
 									searchTerm={q as string}
 									technology={t as string}
