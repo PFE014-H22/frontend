@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { useMemo } from 'react';
 import { SearchResponse } from '../../../server/trpc/router/search';
-import Card from '../../common/card/Card';
 import PercentageMatchBar from '../../common/percentage-match-bar/PercentageMatchBar';
 
 /**
@@ -25,7 +24,7 @@ export interface AnswerCardProps {
 }
 
 /**
- * Component used to display one answer from the backend wrapped inside a Card component.
+ * Component used to display the content from one answer from the backend.
  */
 const AnswerCard = ({ answer, searchTerm, technology }: AnswerCardProps) => {
 	const detailsHref = useMemo(() => {
@@ -36,7 +35,7 @@ const AnswerCard = ({ answer, searchTerm, technology }: AnswerCardProps) => {
 	}, [answer.id, searchTerm, technology]);
 
 	return (
-		<Card>
+		<>
 			<Link href={detailsHref} passHref>
 				<a className="text-2xl font-semibold underline">
 					{answer.parameter}
@@ -68,7 +67,7 @@ const AnswerCard = ({ answer, searchTerm, technology }: AnswerCardProps) => {
 					</div>
 				</div>
 			</div>
-		</Card>
+		</>
 	);
 };
 

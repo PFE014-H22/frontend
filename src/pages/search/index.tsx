@@ -1,4 +1,5 @@
 import { NextPage } from 'next';
+import Card from '../../components/common/card/Card';
 import AnswerCard from '../../components/pages/search/AnswerCard';
 import { trpc } from '../../utils/trpc';
 
@@ -36,12 +37,14 @@ const SearchPage: NextPage<SearchPageProps> = ({ q, t }) => {
 
 						<div className="my-4 flex flex-col items-center justify-center gap-8">
 							{data?.answers.map(answer => (
-								<AnswerCard
-									key={answer.id}
-									answer={answer}
-									searchTerm={q as string}
-									technology={t as string}
-								/>
+								<Card>
+									<AnswerCard
+										key={answer.id}
+										answer={answer}
+										searchTerm={q as string}
+										technology={t as string}
+									/>
+								</Card>
 							))}
 						</div>
 					</section>
