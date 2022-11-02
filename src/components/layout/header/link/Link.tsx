@@ -1,8 +1,8 @@
 import NextLink from 'next/link';
-import { useRouter } from 'next/router';
 import { ReactNode, useMemo } from 'react';
 import { UrlObject } from 'url';
-import { BackgroundColor, TextColor } from '../../../types/colors';
+import { useSelectedRoutes } from '../../../../hooks/useSelectedRoutes';
+import { BackgroundColor, TextColor } from '../../../../types/colors';
 
 /**
  * The props used to configure the navigation links of the header component.
@@ -38,11 +38,7 @@ const Link = ({
 	textColor,
 	...props
 }: LinkProps) => {
-	const { pathname } = useRouter();
-
-	const isSelected = useMemo(() => {
-		return pathname === props.href;
-	}, [pathname]);
+	const { isSelected } = useSelectedRoutes([props.href]);
 
 	const backgroundColor = useMemo(() => {
 		if (isSelected) return selectedBackgroundColor;
