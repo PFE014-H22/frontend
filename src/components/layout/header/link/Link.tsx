@@ -2,6 +2,7 @@ import NextLink from 'next/link';
 import { ReactNode, useMemo } from 'react';
 import { UrlObject } from 'url';
 import { useSelectedRoutes } from '../../../../hooks/useSelectedRoutes';
+import { COLOR_SCHEME } from '../../../../styles/colors';
 import { BackgroundColor, TextColor } from '../../../../types/colors';
 
 /**
@@ -34,8 +35,8 @@ export interface LinkProps {
  */
 const Link = ({
 	children,
-	selectedBackgroundColor,
-	textColor,
+	selectedBackgroundColor = COLOR_SCHEME.headerLinkSelectedColor,
+	textColor = COLOR_SCHEME.headerLinkTextColor,
 	...props
 }: LinkProps) => {
 	const { isSelected } = useSelectedRoutes([props.href]);

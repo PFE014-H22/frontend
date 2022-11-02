@@ -10,7 +10,7 @@ export interface HeaderProps extends Omit<LinkProps, 'children' | 'href'> {}
  */
 const Header = (props: HeaderProps) => {
 	return (
-		<div className="flex justify-end">
+		<header className="flex justify-center min-[400px]:justify-end">
 			<ul className="flex justify-between gap-2">
 				<Link href="/" {...props}>
 					Home
@@ -24,7 +24,7 @@ const Header = (props: HeaderProps) => {
 					Help
 				</Link>
 			</ul>
-		</div>
+		</header>
 	);
 };
 

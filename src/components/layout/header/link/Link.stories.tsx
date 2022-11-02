@@ -1,9 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { COLOR_SCHEME } from '../../../styles/colors';
 import Link from './Link';
 
 export default {
-	title: 'Common/Link',
+	title: 'Layout/Link',
 	component: Link,
 } as ComponentMeta<typeof Link>;
 
@@ -13,6 +12,4 @@ export const Primary = Template.bind({});
 Primary.args = {
 	href: '/',
 	children: 'Link',
-	selectedBackgroundColor: COLOR_SCHEME.headerLinkSelectedColor,
-	textColor: COLOR_SCHEME.headerLinkTextColor,
 };
