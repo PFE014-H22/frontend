@@ -1,5 +1,7 @@
 import { ButtonHTMLAttributes, DOMAttributes, ReactNode } from 'react';
-import { BackgroundColor, TextColor } from '../../types/colors';
+import { COLOR_SCHEME } from '../../../styles/colors';
+import { BorderRadius } from '../../../types/border-radius';
+import { BackgroundColor, TextColor } from '../../../types/colors';
 
 /**
  * The props used to configure the button.
@@ -9,6 +11,11 @@ export interface ButtonProps {
 	 * The background color of the button.
 	 */
 	backgroundColor?: BackgroundColor;
+
+	/**
+	 * The border radius of the button.
+	 */
+	borderRadius?: BorderRadius;
 
 	/**
 	 * The content to show inside the button.
@@ -35,14 +42,15 @@ export interface ButtonProps {
  * Component defining a wrapper for the button html element, styled with tailwind.
  */
 const Button = ({
-	backgroundColor,
+	backgroundColor = COLOR_SCHEME.buttonBackgroundColor,
+	borderRadius = 'rounded-full',
 	children,
-	textColor,
+	textColor = COLOR_SCHEME.buttonTextColor,
 	...props
 }: ButtonProps) => {
 	return (
 		<button
-			className={`${backgroundColor} ${textColor} rounded-2xl px-4 py-2 font-medium outline-1 outline-slate-700 hover:scale-105`}
+			className={`${backgroundColor} ${textColor} ${borderRadius} px-4 py-4 font-medium outline-1 outline-slate-700 hover:scale-105`}
 			{...props}
 		>
 			{children}

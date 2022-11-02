@@ -2,7 +2,7 @@
  * Definition of the color scheme used inside the application.
  */
 export const COLOR_SCHEME = {
-	buttonBackgroundColor: 'bg-blue-500',
+	buttonBackgroundColor: 'bg-[#83a5ff]',
 	buttonTextColor: 'text-white',
 	cardBackgroundColor: 'bg-[#c6c6c6]',
 	footerTextColor: 'text-[#6f6f6f]',
