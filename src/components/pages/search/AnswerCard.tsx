@@ -41,7 +41,7 @@ const AnswerCard = ({ answer, searchTerm, technology }: AnswerCardProps) => {
 
 			<div className={styles.content__container}>
 				<div className={styles.description__container}>
-					<p>
+					<p className={styles.description}>
 						Lorem ipsum dolor sit amet consectetur, adipisicing
 						elit. Mollitia beatae obcaecati omnis ut at quasi id
 						incidunt nam sit minus?
