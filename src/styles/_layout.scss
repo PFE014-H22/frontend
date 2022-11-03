@@ -3,8 +3,7 @@
 	display: flex;
 	flex: 1;
 	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+	width: 100%;
 
 	@media (min-width: 640px) {
 		max-width: 640px;
@@ -25,4 +24,11 @@
 	@media (min-width: 1536px) {
 		max-width: 1536px;
 	}
+}
+
+.container__centered {
+	@extend .base__container;
+	align-items: center;
+	justify-content: center;
+	width: auto;
 }
