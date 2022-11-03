@@ -1,29 +1,10 @@
+@import 'layout';
+
 .container {
-	margin-inline: auto;
-	display: flex;
-	flex: 1;
-	flex-direction: column;
+	@extend .base__container;
 	width: 100%;
-
-	@media (min-width: 640px) {
-		max-width: 640px;
-	}
-
-	@media (min-width: 768px) {
-		max-width: 768px;
-	}
-
-	@media (min-width: 1024px) {
-		max-width: 1024px;
-	}
-
-	@media (min-width: 1280px) {
-		max-width: 1280px;
-	}
-
-	@media (min-width: 1536px) {
-		max-width: 1536px;
-	}
+	align-items: normal;
+	justify-content: normal;
 }
 
 .answer__container {
