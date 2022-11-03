@@ -1,20 +1,15 @@
 .container, .no_logo {
 	display: flex;
-	justify-content: center;
 	max-height: 24px;
 	margin-bottom: 20px;
 }
 
 .container {
-	@media (min-width: 400px) {
-		justify-content: space-between;
-	}
+	justify-content: space-between;
 }
 
 .no_logo {
-	@media (min-width: 400px) {
-		justify-content: end;
-	}
+	justify-content: end;
 }
 
 .links {
@@ -27,4 +22,6 @@
 .logo__wrapper {
 	display: flex;
 	align-items: center;
+	min-height: 36px;
+	min-width: 108px;
 }
