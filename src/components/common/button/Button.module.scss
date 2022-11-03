@@ -1,0 +1,22 @@
+.container {
+	$size: 3.5rem;
+
+	border-radius: 9999px;
+	background-color: #83a5ff;
+	color: #ffffff;
+	border-width: 0;
+	width: $size;
+	height: $size;
+
+	padding: 1rem;
+	font-weight: 500;
+	transition: transform 500ms ease-in-out;
+
+	&:focus {
+		outline: 2px solid #334155;
+	}
+
+	&:hover {
+		transform: scale(1.05);
+	}
+}

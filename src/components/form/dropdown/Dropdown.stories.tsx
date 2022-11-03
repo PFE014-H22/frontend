@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import Dropdown from './Dropdown';
 
 export default {
@@ -7,7 +7,7 @@ export default {
 } as ComponentMeta<typeof Dropdown>;
 
 const Template: ComponentStory<typeof Dropdown> = args => (
-	<div className="max-w-xs">
+	<div style={{ maxWidth: '500px' }}>
 		<Dropdown {...args} />
 	</div>
 );

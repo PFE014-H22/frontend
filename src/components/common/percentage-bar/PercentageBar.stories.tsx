@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import PercentageBar from './PercentageBar';
 
 export default {
@@ -7,7 +7,7 @@ export default {
 } as ComponentMeta<typeof PercentageBar>;
 
 const Template: ComponentStory<typeof PercentageBar> = args => (
-	<div className="max-w-xs">
+	<div style={{ maxWidth: '500px' }}>
 		<PercentageBar {...args} />
 	</div>
 );

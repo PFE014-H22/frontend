@@ -1,6 +1,6 @@
-import '../src/styles/globals.css';
-import NextImage from 'next/image';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
+import NextImage from 'next/image';
+import '../src/styles/globals.scss';
 
 const OriginalNextImage = NextImage.default;
 

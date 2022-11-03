@@ -2,6 +2,7 @@ import Image, { ImageProps } from 'next/image';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 import { UrlObject } from 'url';
+import styles from './LinkImage.module.scss';
 
 /**
  * The props used to configure the LinkImage component.
@@ -28,7 +29,7 @@ export interface LinkImageProps extends ImageProps {
  */
 const LinkImage = ({ alt, children, href, ...props }: LinkImageProps) => {
 	return (
-		<div className="flex flex-col items-center">
+		<div className={styles.container}>
 			<Link href={href} passHref>
 				<a target="_blank" rel="noopener noreferrer">
 					<Image alt={alt} {...props} />
@@ -36,7 +37,7 @@ const LinkImage = ({ alt, children, href, ...props }: LinkImageProps) => {
 			</Link>
 
 			{children && (
-				<figcaption className="text-center text-base font-medium">
+				<figcaption className={styles.figure__caption}>
 					{children}
 				</figcaption>
 			)}

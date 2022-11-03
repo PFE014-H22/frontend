@@ -7,7 +7,7 @@
 		"start:dev": "next dev",
 		"lint": "next lint",
 		"start:prod": "next start",
-		"format": "prettier --write \"src/**/*.css\" \"src/**/*.{ts,tsx}\"",
+		"format": "prettier --write \"src/**/*.scss\" \"src/**/*.{ts,tsx}\"",
 		"storybook": "start-storybook -p 6006",
 		"build-storybook": "build-storybook"
 	},
@@ -37,6 +37,7 @@
 		"@storybook/addon-postcss": "^2.0.0",
 		"@storybook/builder-webpack5": "^6.5.13",
 		"@storybook/manager-webpack5": "^6.5.13",
+		"@storybook/preset-scss": "^1.0.3",
 		"@storybook/react": "^6.5.13",
 		"@storybook/testing-library": "^0.0.13",
 		"@types/node": "18.0.0",
@@ -52,9 +53,8 @@
 		"eslint-plugin-storybook": "^0.6.6",
 		"postcss": "^8.4.14",
 		"prettier": "^2.7.1",
-		"prettier-plugin-tailwindcss": "^0.1.13",
+		"sass": "^1.55.0",
 		"storybook-addon-next-router": "^4.0.1",
-		"tailwindcss": "^3.1.6",
 		"typescript": "^4.8.4"
 	},
 	"ct3aMetadata": {
