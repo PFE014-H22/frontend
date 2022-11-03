@@ -1,0 +1,16 @@
+.container {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	margin-block: 0.875rem;
+}
+
+.divider {
+	$color: #6f6f6f;
+
+	border: none;
+	height: 1px;
+	width: 35%;
+	color: $color;
+	background-color: $color;
+}
