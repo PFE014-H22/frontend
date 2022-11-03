@@ -1,3 +1,4 @@
+import styles from './Header.module.scss';
 import Link, { LinkProps } from './link/Link';
 
 /**
@@ -10,8 +11,8 @@ export interface HeaderProps extends Omit<LinkProps, 'children' | 'href'> {}
  */
 const Header = (props: HeaderProps) => {
 	return (
-		<header className="flex justify-center min-[400px]:justify-end">
-			<ul className="flex justify-between gap-2">
+		<header className={styles.container}>
+			<ul className={styles.links}>
 				<Link href="/" {...props}>
 					Home
 				</Link>

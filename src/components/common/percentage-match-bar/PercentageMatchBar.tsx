@@ -1,7 +1,8 @@
-import { useCallback } from 'react';
+import { CSSProperties, useCallback } from 'react';
 import { clamp } from '../../../lib/clamp';
-import { BackgroundColor } from '../../../types/colors';
-import PercentageBar, { PercentageBarProps } from '../percentage-bar/PercentageBar';
+import PercentageBar, {
+	PercentageBarProps,
+} from '../percentage-bar/PercentageBar';
 
 /**
  * The props used to configure the percentage match bar component.
@@ -13,18 +14,18 @@ export interface PercentageMatchBarProps
  * Shades of color to use as a gradient for the percentage match bar.
  * Goes from red all the way to green.
  */
-const COLORS: Record<number, BackgroundColor> = {
-	0: 'bg-[#ff0000]',
-	1: 'bg-[#ff3300]',
-	2: 'bg-[#ff6600]',
-	3: 'bg-[#ff9900]',
-	4: 'bg-[#ffcc00]',
-	5: 'bg-[#ffff00]',
-	6: 'bg-[#ccff00]',
-	7: 'bg-[#99ff00]',
-	8: 'bg-[#66ff00]',
-	9: 'bg-[#33ff00]',
-	10: 'bg-[#00ff00]',
+const COLORS: Record<number, CSSProperties['color']> = {
+	0: '#ff0000',
+	1: '#ff3300',
+	2: '#ff6600',
+	3: '#ff9900',
+	4: '#ffcc00',
+	5: '#ffff00',
+	6: '#ccff00',
+	7: '#99ff00',
+	8: '#66ff00',
+	9: '#33ff00',
+	10: '#00ff00',
 };
 
 /**

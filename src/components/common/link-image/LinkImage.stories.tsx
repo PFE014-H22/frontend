@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import LinkImage from './LinkImage';
 
 export default {
@@ -7,7 +7,7 @@ export default {
 } as ComponentMeta<typeof LinkImage>;
 
 const Template: ComponentStory<typeof LinkImage> = args => (
-	<div className="max-w-fit">
+	<div style={{ maxWidth: 'fit-content' }}>
 		<LinkImage {...args} />
 	</div>
 );

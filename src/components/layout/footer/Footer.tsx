@@ -1,32 +1,19 @@
 import Image from 'next/image';
-import { COLOR_SCHEME } from '../../../styles/colors';
-import { TextColor } from '../../../types/colors';
-
-/**
- * The props used to configure the footer component.
- */
-export interface FooterProps {
-	/**
-	 * The color to display the footer text with.
-	 */
-	textColor?: TextColor;
-}
+import styles from './Footer.module.scss';
 
 /**
  * Component used to display a common footer for each page.
  */
-const Footer = ({ textColor = COLOR_SCHEME.footerTextColor }: FooterProps) => {
+const Footer = () => {
 	return (
-		<footer className="flex flex-row items-center justify-center gap-2">
+		<footer className={styles.container}>
 			<Image
 				src="/Logo_ETS.png"
 				width={48}
 				height={48}
 				alt="Logo de l'École de Technologie Supérieure"
 			/>
-			<p className={`text-sm leading-7 ${textColor}`}>
-				École de technologie supérieure, 2022
-			</p>
+			<p className={styles.text}>École de technologie supérieure, 2022</p>
 		</footer>
 	);
 };
