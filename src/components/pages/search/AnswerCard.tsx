@@ -25,6 +25,9 @@ export interface AnswerCardProps {
 	technology: string;
 }
 
+/**
+ * Component used to display the content from one answer from the backend.
+ */
 const AnswerCard = ({ answer, searchTerm, technology }: AnswerCardProps) => {
 	const detailsHref = useMemo(() => {
 		let url = `/search/details/${answer.answer_id}`;
