@@ -31,7 +31,7 @@ export interface DetailsPageProps {
  * Maps to the `/search/details/{parameter}` endpoint.
  */
 const DetailsPage: NextPage<DetailsPageProps> = ({ parameter, q, t }) => {
-	const { data } = trpc.details.mockDetails.useQuery({
+	const { data } = trpc.details.details.useQuery({
 		parameter: parameter as string,
 		searchTerm: q as string,
 		technology: t as string,
