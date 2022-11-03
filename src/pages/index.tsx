@@ -9,6 +9,7 @@ import Button from '../components/common/button/Button';
 import Dropdown from '../components/form/dropdown/Dropdown';
 import TextInput from '../components/form/text-input/TextInput';
 import { SearchQuery } from '../lib/SearchQuery';
+import styles from '../styles/HomePage.module.scss';
 import { trpc } from '../utils/trpc';
 
 /**
@@ -64,29 +65,29 @@ const HomePage: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<div className="container mx-auto flex max-w-2xl flex-1 flex-col justify-center">
-				<div className='flex items-center justify-center mb-4'>
-					<div className="relative h-32 w-96">
-						<Image src="/dopamine.svg" layout="fill" />
-					</div>
+			<div className={styles.container}>
+				<div className={styles.logo__wrapper}>
+					<Image src="/dopamine.svg" height={128} width={384} />
 				</div>
 
-				<main className="w-full">
+				<main className={styles.main__container}>
 					<section>
 						<form
 							onSubmit={onFormSubmit}
-							className="flex flex-col gap-4"
+							className={styles.form__container}
 						>
-							<TextInput
-								name="search"
-								onChange={onSearchTextChange}
-								placeholder="Search..."
-								required
-								type="text"
-							/>
+							<div className={styles.form__row}>
+								<TextInput
+									name="search"
+									onChange={onSearchTextChange}
+									placeholder="Search..."
+									required
+									type="text"
+								/>
+							</div>
 
-							<div className="flex flex-row flex-wrap justify-center gap-2">
-								<div className="max-w-[16rem] flex-1">
+							<div className={styles.form__row}>
+								<div className={styles.dropdown__container}>
 									<Dropdown
 										label="Technology"
 										name="technology"
@@ -96,10 +97,7 @@ const HomePage: NextPage = () => {
 									/>
 								</div>
 
-								<Button
-									borderRadius="rounded-full"
-									type="submit"
-								>
+								<Button type="submit">
 									<SearchIcon />
 								</Button>
 							</div>

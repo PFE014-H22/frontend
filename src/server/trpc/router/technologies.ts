@@ -28,6 +28,11 @@ const dropdownChoicesSchema = z.object({
 });
 
 /**
+ * Infered return type from the dropdownChoices schema.
+ */
+export type DropdownChoicesResponse = z.infer<typeof dropdownChoicesSchema>;
+
+/**
  * Trpc router to encapsulate the network requests to the current supported techologies.
  */
 export const technologiesRouter = router({

@@ -16,6 +16,7 @@ module.exports = {
 			},
 		},
 		'storybook-addon-next-router',
+		'@storybook/preset-scss',
 	],
 	framework: '@storybook/react',
 	core: {

@@ -1,26 +1,10 @@
 import { HTMLAttributes, InputHTMLAttributes } from 'react';
-import { COLOR_SCHEME } from '../../../styles/colors';
-import { BorderRadius } from '../../../types/border-radius';
-import {
-	BackgroundColor,
-	PlaceholderColor,
-	TextColor,
-} from '../../../types/colors';
+import styles from './TextInput.module.scss';
 
 /**
  * The props used to configure the input text component.
  */
 export interface TextInputProps {
-	/**
-	 * The background color of the text input.
-	 */
-	backgroundColor?: BackgroundColor;
-
-	/**
-	 * The border radius of the text input.
-	 */
-	borderRadius?: BorderRadius;
-
 	/**
 	 * Id of the html select element.
 	 */
@@ -42,19 +26,9 @@ export interface TextInputProps {
 	placeholder?: InputHTMLAttributes<HTMLInputElement>['placeholder'];
 
 	/**
-	 * The color to display the placeholder text with.
-	 */
-	placeholderColor?: PlaceholderColor;
-
-	/**
 	 * Indicates whether the text value is required in the form.
 	 */
 	required?: InputHTMLAttributes<HTMLInputElement>['required'];
-
-	/**
-	 * The color to display the input text with.
-	 */
-	textColor?: TextColor;
 
 	/**
 	 * Attribute specifying the type of the input element.
@@ -66,19 +40,8 @@ export interface TextInputProps {
 /**
  * Component used to display a text input.
  */
-const TextInput = ({
-	backgroundColor = COLOR_SCHEME.textInputBackgroundColor,
-	borderRadius = 'rounded-full',
-	placeholderColor = COLOR_SCHEME.textInputPlaceHolderTextColor,
-	textColor = COLOR_SCHEME.textInputTextColor,
-	...props
-}: TextInputProps) => {
-	return (
-		<input
-			className={`${borderRadius} ${backgroundColor} px-4 py-2 ${textColor} max-w-[100%] ${placeholderColor}`}
-			{...props}
-		/>
-	);
+const TextInput = ({ ...props }: TextInputProps) => {
+	return <input className={styles.container} {...props} />;
 };
 
 export default TextInput;

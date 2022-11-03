@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import Option from './Option';
 
 export default {
@@ -7,7 +7,7 @@ export default {
 } as ComponentMeta<typeof Option>;
 
 const Template: ComponentStory<typeof Option> = args => (
-	<div className="max-w-xs">
+	<div style={{ maxWidth: '500px' }}>
 		<Option {...args} />
 	</div>
 );
