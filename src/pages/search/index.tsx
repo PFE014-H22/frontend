@@ -23,7 +23,7 @@ export interface SearchPageProps {
  * Maps to the `/search` endpoint.
  */
 const SearchPage: NextPage<SearchPageProps> = ({ q, t }) => {
-	const { data } = trpc.search.mockStackoverflow.useQuery({
+	const { data } = trpc.search.stackoverflow.useQuery({
 		searchTerm: q as string,
 		technology: t as string,
 	});
