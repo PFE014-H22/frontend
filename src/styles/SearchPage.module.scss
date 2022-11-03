@@ -1,7 +1,12 @@
 @import 'layout';
+@import 'typography';
 
 .container {
 	@extend .base__container;
+}
+
+.title {
+	@extend .header__one;
 }
 
 .answer__container {
@@ -12,9 +17,4 @@
 	gap: 2rem;
 
 	margin-block: 1rem;
-}
-
-.header__one {
-	font-size: 2.25rem;
-	font-weight: 700;
 }
