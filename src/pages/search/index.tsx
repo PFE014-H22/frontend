@@ -33,7 +33,7 @@ const SearchPage: NextPage<SearchPageProps> = ({ q, t }) => {
 			<div className={styles.container}>
 				<main>
 					<section>
-						<h1 className={styles.header__one}>Search Results</h1>
+						<h1 className={styles.title}>Search Results</h1>
 
 						<div className={styles.answer__container}>
 							{data?.answers.map((answer, index) => (

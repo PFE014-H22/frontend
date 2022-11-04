@@ -1,5 +1,56 @@
 @import 'layout';
+@import 'typography';
 
 .container {
 	@extend .base__container;
+	gap: 2.5rem;
+	margin-bottom: 1rem;
+}
+
+.title {
+	@extend .header__one;
+}
+
+.about__section {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+
+	.about__description {
+		font-size: 2rem;
+	}
+}
+
+.technologies__section {
+	.technologies__title {
+		@extend .header__two;
+	}
+
+	.technologies__container {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-evenly;
+		flex-wrap: wrap;
+		gap: 1rem;
+
+		margin-block: 1rem;
+	}
+}
+
+.team__section {
+	.team__title {
+		@extend .header__two;
+	}
+
+	.team__container {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-evenly;
+		flex-wrap: wrap;
+		gap: 1rem;
+
+		margin-top: 2rem;
+	}
 }
