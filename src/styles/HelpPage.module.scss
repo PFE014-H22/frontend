@@ -1,0 +1,73 @@
+@import 'colors';
+@import 'layout';
+@import 'typography';
+
+.container {
+	@extend .base__container;
+	gap: 2.5rem;
+	margin-bottom: 1rem;
+}
+
+.title {
+	@extend .header__one;
+}
+
+.steps__section {
+	.steps__title {
+		@extend .header__two;
+	}
+
+	.steps__container {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+		gap: 1.125rem;
+		margin-block: 1.375rem;
+
+		color: $darkGray;
+	}
+}
+
+.additional__notes__section {
+	.additional__notes__title {
+		@extend .header__two;
+	}
+
+	.additional__notes__container {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+		gap: 1.125rem;
+		margin-block: 1.375rem;
+
+		color: $darkGray;
+		font-size: 2.25rem;
+	}
+
+	.similarity__score__container {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 1.5rem;
+
+		@media (min-width: 340px) {
+			flex-wrap: nowrap;
+		}
+
+		.match__bar__container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			width: 7.5rem;
+
+			.percentage__container {
+				font-size: 1.25rem;
+			}
+		}
+	}
+}

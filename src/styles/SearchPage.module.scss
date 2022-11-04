@@ -1,29 +1,12 @@
+@import 'layout';
+@import 'typography';
+
 .container {
-	margin-inline: auto;
-	display: flex;
-	flex: 1;
-	flex-direction: column;
-	width: 100%;
+	@extend .base__container;
+}
 
-	@media (min-width: 640px) {
-		max-width: 640px;
-	}
-
-	@media (min-width: 768px) {
-		max-width: 768px;
-	}
-
-	@media (min-width: 1024px) {
-		max-width: 1024px;
-	}
-
-	@media (min-width: 1280px) {
-		max-width: 1280px;
-	}
-
-	@media (min-width: 1536px) {
-		max-width: 1536px;
-	}
+.title {
+	@extend .header__one;
 }
 
 .answer__container {
@@ -34,9 +17,4 @@
 	gap: 2rem;
 
 	margin-block: 1rem;
-}
-
-.header__one {
-	font-size: 2.25rem;
-	font-weight: 700;
 }
