@@ -59,7 +59,7 @@ export type Source = DetailsResponse['sources'][0];
  */
 export const detailsRouter = router({
 	/**
-	 * Retrieve the details for a parameter from the backend server (GET /details)
+	 * Retrieve the details for a parameter from the backend server (GET /details/<parameter>)
 	 */
 	details: publicProcedure
 		.input(
@@ -70,9 +70,8 @@ export const detailsRouter = router({
 			}),
 		)
 		.query(async ({ input }) => {
-			const { data } = await axios.get(`${env.PROXY_API}/details`, {
+			const { data } = await axios.get(`${env.PROXY_API}/details/${encodeURIComponent(input.parameter)}`, {
 				params: {
-					p: encodeURIComponent(input.parameter),
 					q: encodeURIComponent(input.searchTerm),
 					t: encodeURIComponent(input.technology),
 				},
@@ -80,7 +79,7 @@ export const detailsRouter = router({
 			return detailsSchema.parse(data);
 		}),
 	/**
-	 * Mocks the implementation of the backend server. (GET /details)
+	 * Mocks the implementation of the backend server. (GET /details/<parameter>)
 	 */
 	mockDetails: publicProcedure
 		.input(
