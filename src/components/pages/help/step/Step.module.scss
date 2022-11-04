@@ -1,0 +1,18 @@
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	gap: 0.75rem;
+	font-size: 2rem;
+}
+
+.step__index {
+	white-space: nowrap;
+	font-weight: bold;
+}
+
+@media (min-width: 300px) {
+	.container {
+		flex-wrap: nowrap;
+	}
+}
