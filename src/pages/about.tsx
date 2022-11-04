@@ -1,3 +1,4 @@
+import { NextPage } from 'next';
 import Head from 'next/head';
 import MemberPortrait from '../components/pages/about/member-portrait/MemberPortrait';
 import TechnologyIcon from '../components/pages/about/technology-icon/TechnologyIcon';
@@ -6,7 +7,7 @@ import styles from '../styles/AboutPage.module.scss';
 /**
  * Component representing the page on the `/about` endpoint.
  */
-const AboutPage = () => {
+const AboutPage: NextPage = () => {
 	return (
 		<>
 			<Head>
