@@ -55,19 +55,13 @@ const HelpPage: NextPage = () => {
 					</h2>
 
 					<div className={styles.additional__notes__container}>
-						<p>
-							We could include a note about the algorithm we used
-							to determine which results to consider and how we
-							parse the data, where we got the data, etc.
-						</p>
-
 						<div className={styles.similarity__score__container}>
 							<div className={styles.match__bar__container}>
 								<span className={styles.percentage__container}>86.89%</span>
 								<PercentageMatchBar percentage={0.65} />
 							</div>
 							<p>
-								indicates the score of the result in correlation
+								The percentage bar indicates the score of the result in correlation
 								with the user’s question, as determined by the
 								Natural Language Processing (NLP) algorithm.
 							</p>
