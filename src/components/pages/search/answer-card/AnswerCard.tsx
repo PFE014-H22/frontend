@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { useMemo } from 'react';
-import { SearchResponse } from '../../../server/trpc/router/search';
-import Card from '../../common/card/Card';
-import PercentageMatchBar from '../../common/percentage-match-bar/PercentageMatchBar';
+import { SearchResponse } from '../../../../server/trpc/router/search';
+import Card from '../../../common/card/Card';
+import PercentageMatchBar from '../../../common/percentage-match-bar/PercentageMatchBar';
 import styles from './AnswerCard.module.scss';
 
 /**

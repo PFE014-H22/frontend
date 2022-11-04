@@ -40,7 +40,8 @@ export const searchRouter = router({
 		.query(async ({ input }) => {
 			const { data } = await axios.get(`${env.PROXY_API}/search`, {
 				params: {
-					q: input.searchTerm,
+					q: encodeURIComponent(input.searchTerm),
+					t: encodeURIComponent(input.technology)
 				},
 			});
 			return searchSchema.parse(data);

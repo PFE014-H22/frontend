@@ -17,7 +17,7 @@ import { trpc } from '../utils/trpc';
  */
 const HomePage: NextPage = () => {
 	const router = useRouter();
-	const { data } = trpc.technologies.mockDropdown.useQuery();
+	const { data } = trpc.technologies.dropdown.useQuery();
 	const [searchText, setSearchText] = useState('');
 	const [technology, setTechnology] = useState('');
 
@@ -67,7 +67,12 @@ const HomePage: NextPage = () => {
 
 			<div className={styles.container}>
 				<div className={styles.logo__wrapper}>
-					<Image src="/dopamine.svg" height={128} width={384} />
+					<Image
+						src="/dopamine.svg"
+						height={128}
+						width={384}
+						alt="Dopamine Logo"
+					/>
 				</div>
 
 				<main className={styles.main__container}>
