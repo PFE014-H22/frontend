@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import AnswerCard from '../../components/pages/search/AnswerCard';
+import AnswerCard from '../../components/pages/search/answer-card/AnswerCard';
 import styles from '../../styles/SearchPage.module.scss';
 import { trpc } from '../../utils/trpc';
 

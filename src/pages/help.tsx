@@ -32,7 +32,7 @@ const HelpPage: NextPage = () => {
 
 							<Step stepIndex={2}>
 								Refine your search by clicking on the
-								"Technologies" menu and selecting a specific
+								&quot;Technologies&quot; menu and selecting a specific
 								technology.
 							</Step>
 

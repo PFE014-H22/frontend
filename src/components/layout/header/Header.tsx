@@ -2,6 +2,7 @@ import styles from './Header.module.scss';
 import Link, { LinkProps } from './link/Link';
 import { useSelectedRoutes } from '../../../hooks/useSelectedRoutes';
 import Image from 'next/image';
+import NextLink from 'next/link';
 
 /**
  * The props used to configure the header component.
@@ -16,14 +17,21 @@ const Header = (props: HeaderProps) => {
 
 	return (
 		<header className={isHomePage ? styles.no_logo : styles.container}>
-			{!isHomePage &&
-				<a href="/">
-					<div className={styles.logo__wrapper}>
-						<Image src="/dopamine.svg" height={36} width={108} />
-					</div>
-				</a>
-			}
-				
+			{!isHomePage && (
+				<NextLink href="/" passHref>
+					<a>
+						<div className={styles.logo__wrapper}>
+							<Image
+								src="/dopamine.svg"
+								height={36}
+								width={108}
+								alt="Dopamine Logo"
+							/>
+						</div>
+					</a>
+				</NextLink>
+			)}
+
 			<ul className={styles.links}>
 				<Link href="/" {...props}>
 					Home
