@@ -1,5 +1,7 @@
 import styles from './Header.module.scss';
 import Link, { LinkProps } from './link/Link';
+import { useSelectedRoutes } from '../../../hooks/useSelectedRoutes';
+import Image from 'next/image';
 
 /**
  * The props used to configure the header component.
@@ -10,8 +12,18 @@ export interface HeaderProps extends Omit<LinkProps, 'children' | 'href'> {}
  * Component used to display all the navigations links.
  */
 const Header = (props: HeaderProps) => {
+	const { isSelected: isHomePage } = useSelectedRoutes(['/']);
+
 	return (
-		<header className={styles.container}>
+		<header className={isHomePage ? styles.no_logo : styles.container}>
+			{!isHomePage &&
+				<a href="/">
+					<div className={styles.logo__wrapper}>
+						<Image src="/dopamine.svg" height={36} width={108} />
+					</div>
+				</a>
+			}
+				
 			<ul className={styles.links}>
 				<Link href="/" {...props}>
 					Home
