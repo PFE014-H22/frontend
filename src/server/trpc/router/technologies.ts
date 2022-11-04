@@ -8,7 +8,7 @@ import { env } from '../../../env/server.mjs';
  * received from the server when asking for the
  * current supported techologies.
  */
-const dropdownChoicesSchema = z.object({
+export const dropdownChoicesSchema = z.object({
 	/**
 	 * List of all the current supported techologies
 	 */
