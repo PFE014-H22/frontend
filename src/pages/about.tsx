@@ -22,22 +22,11 @@ const AboutPage: NextPage = () => {
 						<h1 className={styles.title}>About us</h1>
 
 						<p className={styles.about__description}>
-							Lorem ipsum dolor sit amet consectetur adipisicing
-							elit. Possimus cumque quia eos officia ab rerum
-							nemo. Eius, inventore incidunt. Impedit natus
-							facilis laudantium aliquam eligendi voluptatibus?
-							Ad, ipsa laudantium necessitatibus harum nemo ut
-							soluta, doloremque accusantium mollitia sed
-							dignissimos commodi. Consequatur omnis sed, culpa
-							reprehenderit expedita modi ducimus quisquam at
-							nostrum ratione. Eius harum libero dolorum aliquam
-							neque. Quos harum, magnam, earum esse corrupti ipsam
-							itaque laboriosam maxime ut optio hic ab at
-							doloremque voluptatibus consequatur mollitia id
-							dignissimos voluptates eius explicabo? Perspiciatis
-							impedit quasi, rerum placeat reiciendis iusto ipsam
-							expedita, sit quam eos vitae quibusdam
-							necessitatibus eius. Voluptas, obcaecati!
+							This website was designed by software engineering
+							students at ÉTS as part of their end-of-study
+							project. To access the project’s documentation or
+							for more infromation about the resources used,
+							please click on one of the links below.
 						</p>
 					</section>
 				</main>
