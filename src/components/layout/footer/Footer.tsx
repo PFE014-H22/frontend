@@ -7,12 +7,14 @@ import styles from './Footer.module.scss';
 const Footer = () => {
 	return (
 		<footer className={styles.container}>
-			<Image
-				src="/Logo_ETS.png"
-				width={48}
-				height={48}
-				alt="Logo de l'École de Technologie Supérieure"
-			/>
+			<div className={styles.logo__wrapper}>
+				<Image
+					src="/Logo_ETS.png"
+					width={48}
+					height={48}
+					alt="Logo de l'École de Technologie Supérieure"
+				/>
+			</div>
 			<p className={styles.text}>École de technologie supérieure, 2022</p>
 		</footer>
 	);
