@@ -63,8 +63,8 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ parameter, q, t }) => {
 				<main>
 					<section>
 						<div className={styles.details__container}>
-							{data?.sources.map(source => (
-								<div className={styles.source__container}>
+							{data?.sources.map((source, index) => (
+								<div key={index} className={styles.source__container}>
 									<Card>{componentFactory(source)}</Card>
 								</div>
 							))}
