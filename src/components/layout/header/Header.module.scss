@@ -1,0 +1,27 @@
+.container, .no_logo {
+	display: flex;
+	max-height: 24px;
+	margin-bottom: 20px;
+}
+
+.container {
+	justify-content: space-between;
+}
+
+.no_logo {
+	justify-content: end;
+}
+
+.links {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.logo__wrapper {
+	display: flex;
+	align-items: center;
+	min-height: 36px;
+	min-width: 108px;
+}

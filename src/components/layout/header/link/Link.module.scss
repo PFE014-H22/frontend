@@ -1,0 +1,19 @@
+.container {
+	list-style: none;
+}
+
+.link {
+	border-radius: 9999px;
+	padding-inline: 1rem;
+	padding-block: 0.25rem;
+	font-size: 1.125rem;
+	color: #000000;
+
+	&.selected {
+		background-color: #c5c5c5;
+	}
+
+	&:hover {
+		opacity: 0.8;
+	}
+}
