@@ -1,0 +1,50 @@
+.portrait {
+    width: 128px;
+    height: 128px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    
+    .linkedin_icon {
+        display: block;
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        color: #ffffff;
+        width: 48px;
+        height: 48px;
+        opacity: 0;
+        transition: opacity 0.5s linear;
+    }
+
+    .portrait_background {
+        -webkit-transition: all 0.5s ease-out;
+        -moz-transition: all 0.5s ease-out;
+        -o-transition: all 0.5s ease-out;
+        transition: all 0.5s ease-out;
+        filter: brightness(100%);
+    }
+}
+
+.portrait:hover {
+    .linkedin_icon {
+        opacity: 1;
+    }
+
+    .portrait_background {
+        filter: brightness(70%);
+    }
+}
+
+.member {
+	text-align: center;
+	font-size: 1rem;
+	font-weight: 500;
+    margin-top: 10px;
+}
+
+.title {
+	text-align: center;
+	font-size: 0.9rem;
+    margin-top: 2px;
+}

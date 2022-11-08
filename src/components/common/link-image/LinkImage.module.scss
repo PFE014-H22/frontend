@@ -4,10 +4,20 @@
 	align-items: center;
 	justify-content: center;
 	width: fit-content;
+	-webkit-transition: all 0.5s ease-out;
+	-moz-transition: all 0.5s ease-out;
+	-o-transition: all 0.5s ease-out;
+	transition: all 0.5s ease-out;
+	filter: brightness(100%);
+}
+
+.container:hover {
+	filter: brightness(70%);
 }
 
 .figure__caption {
 	text-align: center;
 	font-size: 1rem;
 	font-weight: 500;
+	margin-top: 10px;
 }
