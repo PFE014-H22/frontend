@@ -43,12 +43,10 @@ export const technologiesRouter = router({
 	 * Mocks the implementation of the backend server. (GET /technologies)
 	 */
 	mockDropdown: publicProcedure.query(() => {
-		const data = {
-			technologies: [
-				{ key: 'CASSANDRA', value: 'Cassandra' },
-				{ key: 'MongoDB', value: 'MongoDB' },
-			],
-		};
+		const data = [
+			{ key: 'CASSANDRA', value: 'Cassandra' },
+			{ key: 'MongoDB', value: 'MongoDB' },
+		];
 		return dropdownChoicesSchema.parse(data);
 	}),
 });
