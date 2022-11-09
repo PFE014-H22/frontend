@@ -1,9 +1,11 @@
+@import '../../../styles/colors';
+
 .container {
 	$size: 3.5rem;
 
 	border-radius: 9999px;
-	background-color: #83a5ff;
-	color: #ffffff;
+	background-color: $Highlight;
+	color: white;
 	border-width: 0;
 	width: $size;
 	height: $size;
@@ -13,7 +15,7 @@
 	transition: transform 500ms ease-in-out;
 
 	&:focus {
-		outline: 2px solid #334155;
+		outline: 2px solid $Outline;
 	}
 
 	&:hover {

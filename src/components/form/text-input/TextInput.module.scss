@@ -1,20 +1,20 @@
-.container {
-	$textColor: #000000;
+@import '../../../styles/colors';
 
-	background-color: #c5c5c5;
+.container {
+	background-color: $LightGray;
 	border-radius: 9999px;
 	border-width: 0;
-	color: $textColor;
+	color: black;
 
 	padding-inline: 1rem;
 	padding-block: 0.5rem;
 	width: 100%;
 
 	&:focus {
-		outline: 2px solid #334155;
+		outline: 2px solid $Outline;
 	}
 
 	&::placeholder {
-		color: $textColor;
+		color: black;
 	}
 }

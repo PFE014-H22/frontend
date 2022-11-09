@@ -1,3 +1,5 @@
+@import '../../../../styles/colors';
+
 .container {
 	list-style: none;
 }
@@ -7,10 +9,10 @@
 	padding-inline: 1rem;
 	padding-block: 0.25rem;
 	font-size: 1.125rem;
-	color: #000000;
+	color: black;
 
 	&.selected {
-		background-color: #c5c5c5;
+		background-color: $LightGray;
 	}
 
 	&:hover {
