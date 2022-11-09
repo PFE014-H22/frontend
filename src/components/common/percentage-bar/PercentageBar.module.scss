@@ -1,13 +1,14 @@
 @import '../../../styles/colors';
+@import '../../../styles/constants';
 
 .container {
-	background-color: $Gray;
+	background-color: $gray;
 	height: 1.25rem;
 	width: 100%;
-	border-radius: 9999px;
+	border-radius: $rounded-full;
 }
 
 .fill__bar {
 	height: 1.25rem;
-	border-radius: 9999px;
+	border-radius: $rounded-full;
 }

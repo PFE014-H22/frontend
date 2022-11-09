@@ -1,8 +1,9 @@
 @import '../../../styles/colors';
+@import '../../../styles/constants';
 
 .container {
-	background-color: $LightGray;
-	border-radius: 9999px;
+	background-color: $light-gray;
+	border-radius: $rounded-full;
 	border-width: 0;
 	color: black;
 
@@ -11,7 +12,7 @@
 	width: 100%;
 
 	&:focus {
-		outline: 2px solid $Outline;
+		outline: 2px solid $outline;
 	}
 
 	&::placeholder {

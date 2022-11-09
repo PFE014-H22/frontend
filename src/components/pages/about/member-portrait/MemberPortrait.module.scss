@@ -1,3 +1,5 @@
+@import '../../../../styles/constants';
+
 .portrait {
     width: 128px;
     height: 128px;
@@ -22,7 +24,6 @@
         -moz-transition: all 0.5s ease-out;
         -o-transition: all 0.5s ease-out;
         transition: all 0.5s ease-out;
-        filter: brightness(100%);
     }
 }
 
@@ -32,7 +33,7 @@
     }
 
     .portrait_background {
-        filter: brightness(70%);
+        filter: $brightness-transition
     }
 }
 

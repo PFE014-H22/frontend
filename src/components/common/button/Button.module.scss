@@ -1,10 +1,11 @@
 @import '../../../styles/colors';
+@import '../../../styles/constants';
 
 .container {
 	$size: 3.5rem;
 
-	border-radius: 9999px;
-	background-color: $Highlight;
+	border-radius: $rounded-full;
+	background-color: $highlight;
 	color: white;
 	border-width: 0;
 	width: $size;
@@ -12,13 +13,11 @@
 
 	padding: 1rem;
 	font-weight: 500;
-	transition: transform 500ms ease-in-out;
-
-	&:focus {
-		outline: 2px solid $Outline;
-	}
+	transition: all 0.5s ease-in-out;
 
 	&:hover {
 		transform: scale(1.05);
+		opacity: $opacity-transition;
+		cursor: pointer;
 	}
 }

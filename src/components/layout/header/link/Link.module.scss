@@ -1,21 +1,23 @@
 @import '../../../../styles/colors';
+@import '../../../../styles/constants';
 
 .container {
 	list-style: none;
 }
 
 .link {
-	border-radius: 9999px;
+	border-radius: $rounded-full;
 	padding-inline: 1rem;
 	padding-block: 0.25rem;
 	font-size: 1.125rem;
 	color: black;
+	transition: all 500ms ease-in-out;
 
 	&.selected {
-		background-color: $LightGray;
+		background-color: $light-gray;
 	}
 
 	&:hover {
-		opacity: 0.8;
+		opacity: $opacity-transition;
 	}
 }
