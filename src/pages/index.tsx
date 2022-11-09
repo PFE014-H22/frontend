@@ -97,7 +97,7 @@ const HomePage: NextPage = () => {
 										label="Technology"
 										name="technology"
 										onChange={onTechnologyChange}
-										options={data?.technologies}
+										options={data}
 										required
 									/>
 								</div>
