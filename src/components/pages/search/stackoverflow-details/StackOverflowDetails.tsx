@@ -1,4 +1,4 @@
-import { Source } from '../../../../server/trpc/router/details';
+import { Source } from '../../../../server/trpc/router/search';
 import PercentageMatchBar from '../../../common/percentage-match-bar/PercentageMatchBar';
 import HorizontalDivider from '../../../layout/horizontal-divider/HorizontalDivider';
 import Tag from '../tag/Tag';

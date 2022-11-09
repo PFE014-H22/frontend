@@ -1,8 +1,8 @@
-import Link from 'next/link';
-import { useMemo } from 'react';
-import { SearchResponse } from '../../../../server/trpc/router/search';
+import { useCallback, useState } from 'react';
+import { SearchResponse, Source } from '../../../../server/trpc/router/search';
 import Card from '../../../common/card/Card';
 import PercentageMatchBar from '../../../common/percentage-match-bar/PercentageMatchBar';
+import StackOverflowDetails from '../stackoverflow-details/StackOverflowDetails';
 import styles from './AnswerCard.module.scss';
 
 /**
@@ -13,36 +13,32 @@ export interface AnswerCardProps {
 	 * Single answer object from the search backend response.
 	 */
 	answer: SearchResponse['answers'][0];
-
-	/**
-	 * The search term that was queried to get the answer.
-	 */
-	searchTerm: string;
-
-	/**
-	 * The technology that was selected to get the answer.
-	 */
-	technology: string;
 }
 
 /**
  * Component used to display the content from one answer from the backend.
  */
-const AnswerCard = ({ answer, searchTerm, technology }: AnswerCardProps) => {
-	const detailsHref = useMemo(() => {
-		let url = `/search/details/${answer.parameter.name}`;
-		url += `?q=${encodeURIComponent(searchTerm)}`;
-		url += `&t=${encodeURIComponent(technology)}`;
-		return url;
-	}, [answer.parameter.name, searchTerm, technology]);
+const AnswerCard = ({ answer }: AnswerCardProps) => {
+	const [showDetails, setShowDetails] = useState(false);
+
+	const componentFactory = (source: Source) => {
+		switch (source.name) {
+			case 'stackoverflow':
+				return <StackOverflowDetails source={source} />;
+			default:
+				return null;
+		}
+	};
+
+	const handleCollapse = useCallback(() => {
+		setShowDetails(showDetails => !showDetails);
+	}, []);
 
 	return (
-		<Card>
-			<Link href={detailsHref} passHref>
-				<a className={styles.link__parameter}>
-					{answer.parameter.name}
-				</a>
-			</Link>
+		<Card onClick={handleCollapse}>
+			<div className={styles.parameter__name}>
+				{answer.parameter.name}
+			</div>
 
 			<div className={styles.content__container}>
 				<div className={styles.description__container}>
@@ -66,6 +62,19 @@ const AnswerCard = ({ answer, searchTerm, technology }: AnswerCardProps) => {
 						/>
 					</div>
 				</div>
+			</div>
+
+			<div
+				className={[
+					styles.collapse__container,
+					showDetails ? styles.open : styles.close,
+				].join(' ')}
+			>
+				{answer.sources.map((source, index) => (
+					<div key={index} className={styles.source__container}>
+						{componentFactory(source)}
+					</div>
+				))}
 			</div>
 		</Card>
 	);

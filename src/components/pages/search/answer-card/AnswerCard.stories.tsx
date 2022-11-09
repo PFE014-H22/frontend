@@ -37,6 +37,4 @@ Primary.args = {
 			},
 		],
 	},
-	searchTerm: 'Search',
-	technology: 'Technology',
 };

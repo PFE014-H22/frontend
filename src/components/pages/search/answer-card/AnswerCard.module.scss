@@ -55,6 +55,18 @@
 	justify-self: flex-end;
 }
 
+.collapse__container {
+	margin-block: 1rem;
+
+	&.open {
+		display: block;
+	}
+
+	&.close {
+		display: none;
+	}
+}
+
 @media (min-width: 640px) {
 	.match__bar__container {
 		flex-wrap: nowrap;
