@@ -36,7 +36,7 @@ const SearchPage: NextPage<SearchPageProps> = ({ q, t }) => {
 					<section>
 						<h1 className={styles.title}>Search Results</h1>
 						{isLoading ? (
-							<div className={styles.loading_skeleton}>
+							<div>
 								<LoadingSkeleton/>
 								<LoadingSkeleton/>
 								<LoadingSkeleton/>
