@@ -108,24 +108,24 @@ const Header = (props: HeaderProps) => {
 								width: '100px',
 							},
 						}}
-					>
-						<MenuItem onClick={handleClose}>
-							<NextLink href="/" {...props}>
+					>	
+						<NextLink href="/" {...props}>
+							<MenuItem onClick={handleClose}>
 								Home
-							</NextLink>
-						</MenuItem>
-
-						<MenuItem onClick={handleClose}>
-							<NextLink href="/about" {...props}>
+							</MenuItem>
+						</NextLink>
+						
+						<NextLink href="/about" {...props}>
+							<MenuItem onClick={handleClose}>
 								About
-							</NextLink>
-						</MenuItem>
+							</MenuItem>
+						</NextLink>
 
-						<MenuItem onClick={handleClose}>
-							<NextLink href="/help" {...props}>
+						<NextLink href="/help" {...props}>
+							<MenuItem onClick={handleClose}>
 								Help
-							</NextLink>
-						</MenuItem>
+							</MenuItem>
+						</NextLink>
 					</Menu>
 				</div>
 			) : (
