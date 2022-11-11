@@ -1,8 +1,11 @@
 import styles from './Header.module.scss';
-import Link, { LinkProps } from './link/Link';
+import { LinkProps } from './link/Link';
 import { useSelectedRoutes } from '../../../hooks/useSelectedRoutes';
 import Image from 'next/image';
 import NextLink from 'next/link';
+import { useMediaQuery } from '../../../hooks/useMediaQuery';
+import HorizontalLinks from './horizontal-links/HorizontalLinks';
+import DropdownLinks from './dropdown-links/DropdownLinks';
 
 /**
  * The props used to configure the header component.
@@ -15,12 +18,15 @@ export interface HeaderProps extends Omit<LinkProps, 'children' | 'href'> {}
 const Header = (props: HeaderProps) => {
 	const { isSelected: isHomePage } = useSelectedRoutes(['/']);
 
+	// Target width
+	const isMaxWidth = useMediaQuery(450);
+
 	return (
 		<header className={isHomePage ? styles.no_logo : styles.container}>
 			{!isHomePage && (
 				<NextLink href="/" passHref>
 					<a>
-						<div className={styles.logo__wrapper}>
+						<div className={styles.logo_wrapper}>
 							<Image
 								src="/dopamine.svg"
 								height={36}
@@ -31,20 +37,11 @@ const Header = (props: HeaderProps) => {
 					</a>
 				</NextLink>
 			)}
-
-			<ul className={styles.links}>
-				<Link href="/" {...props}>
-					Home
-				</Link>
-
-				<Link href="/about" {...props}>
-					About
-				</Link>
-
-				<Link href="/help" {...props}>
-					Help
-				</Link>
-			</ul>
+			{isMaxWidth ? (
+				<DropdownLinks {...props}/>
+			) : (
+				<HorizontalLinks {...props}/>
+			)}
 		</header>
 	);
 };
