@@ -3,12 +3,11 @@ import Link, { LinkProps } from './link/Link';
 import { useSelectedRoutes } from '../../../hooks/useSelectedRoutes';
 import Image from 'next/image';
 import NextLink from 'next/link';
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, MouseEvent } from 'react';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
-import React from 'react';
 
 /**
  * The props used to configure the header component.
@@ -28,13 +27,11 @@ const Header = (props: HeaderProps) => {
 	const useMediaQuery = (width: number) => {
 		const [targetReached, setTargetReached] = useState(false);
 	
-		const updateTarget = useCallback((e: { matches: any; }) => {
+		const updateTarget = useCallback((e: MediaQueryListEvent) => {
 			if (e.matches) {
 				setTargetReached(true);
-				handleClose
 			} else {
 				setTargetReached(false);
-				handleClose
 			}
 		}, []);
 	
@@ -55,11 +52,11 @@ const Header = (props: HeaderProps) => {
 	// Target width
 	const isMaxWidth = useMediaQuery(450);
 
-	const [anchorElement, setAnchorElement] = React.useState<null | HTMLElement>(null);
+	const [anchorElement, setAnchorElement] = useState<null | HTMLElement>(null);
 	const open = Boolean(anchorElement);
 
 	// Sets the anchor to the parent element on click
-	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+	const handleClick = (event: MouseEvent<HTMLElement>) => {
 		setAnchorElement(event.currentTarget.parentElement);
 	};
 
