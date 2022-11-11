@@ -1,6 +1,5 @@
 import { Source } from '../../../../server/trpc/router/search';
 import PercentageMatchBar from '../../../common/percentage-match-bar/PercentageMatchBar';
-import HorizontalDivider from '../../../layout/horizontal-divider/HorizontalDivider';
 import Tag from '../tag/Tag';
 import styles from './StackOverflowDetails.module.scss';
 
@@ -54,8 +53,6 @@ const StackOverflowDetails = ({ source }: StackOverflowDetailsProps) => {
 					className={styles.question__body}
 					dangerouslySetInnerHTML={{ __html: source.question_body }}
 				/>
-
-				<HorizontalDivider />
 
 				<h4 className={styles.answer__subtitle}>Accepted answer</h4>
 

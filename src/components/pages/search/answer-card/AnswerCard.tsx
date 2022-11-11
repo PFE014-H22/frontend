@@ -1,7 +1,14 @@
-import { useCallback, useState } from 'react';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import {
+	Accordion,
+	AccordionDetails,
+	AccordionSummary,
+	Typography,
+} from '@mui/material';
 import { SearchResponse, Source } from '../../../../server/trpc/router/search';
 import Card from '../../../common/card/Card';
-import PercentageMatchBar from '../../../common/percentage-match-bar/PercentageMatchBar';
+import HorizontalDivider from '../../../layout/horizontal-divider/HorizontalDivider';
+import AnswerMatch from '../answer-match/AnswerMatch';
 import StackOverflowDetails from '../stackoverflow-details/StackOverflowDetails';
 import styles from './AnswerCard.module.scss';
 
@@ -19,8 +26,6 @@ export interface AnswerCardProps {
  * Component used to display the content from one answer from the backend.
  */
 const AnswerCard = ({ answer }: AnswerCardProps) => {
-	const [showDetails, setShowDetails] = useState(false);
-
 	const componentFactory = (source: Source) => {
 		switch (source.name) {
 			case 'stackoverflow':
@@ -30,52 +35,50 @@ const AnswerCard = ({ answer }: AnswerCardProps) => {
 		}
 	};
 
-	const handleCollapse = useCallback(() => {
-		setShowDetails(showDetails => !showDetails);
-	}, []);
-
 	return (
-		<Card onClick={handleCollapse}>
-			<div className={styles.parameter__name}>
-				{answer.parameter.name}
-			</div>
-
-			<div className={styles.content__container}>
-				<div className={styles.description__container}>
-					<p className={styles.description}>
-						{answer.parameter.description}
-					</p>
-				</div>
-
-				<div className={styles.parameter__results__container}>
-					<span className={styles.match__container}>
-						{answer.parameter.matches} matches
-					</span>
-
-					<div className={styles.match__bar__container}>
-						<span className={styles.similarity__score}>
-							{(answer.similarity_score * 100).toFixed(2)}%
-						</span>
-
-						<PercentageMatchBar
-							percentage={answer.similarity_score}
-						/>
-					</div>
-				</div>
-			</div>
-
-			<div
-				className={[
-					styles.collapse__container,
-					showDetails ? styles.open : styles.close,
-				].join(' ')}
+		<Card>
+			<Accordion
+				className={styles.accordion__container}
+				elevation={0}
+				disableGutters
 			>
-				{answer.sources.map((source, index) => (
-					<div key={index} className={styles.source__container}>
-						{componentFactory(source)}
+				<AccordionSummary
+					className={styles.accordion__summary}
+					expandIcon={
+						<ExpandMoreIcon className={styles.accordion__icon} />
+					}
+				>
+					<div className={styles.summary__content}>
+						<div className={styles.summary__content__row}>
+							<Typography className={styles.parameter__name}>
+								{answer.parameter.name}
+							</Typography>
+
+							<Typography>
+								<AnswerMatch
+									matches={answer.parameter.matches}
+									similarity_score={answer.similarity_score}
+								/>
+							</Typography>
+						</div>
+
+						<Typography className={styles.parameter__description}>
+							{answer.parameter.description}
+						</Typography>
 					</div>
-				))}
-			</div>
+				</AccordionSummary>
+
+				<AccordionDetails>
+					{answer.sources.map((source, index) => (
+						<Typography key={index}>
+							{componentFactory(source)}
+							{index !== answer.sources.length - 1 && (
+								<HorizontalDivider />
+							)}
+						</Typography>
+					))}
+				</AccordionDetails>
+			</Accordion>
 		</Card>
 	);
 };
