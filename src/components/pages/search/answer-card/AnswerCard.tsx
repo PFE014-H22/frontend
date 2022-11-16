@@ -54,7 +54,7 @@ const AnswerCard = ({ answer }: AnswerCardProps) => {
 								{answer.parameter.name}
 							</Typography>
 
-							<Typography>
+							<Typography component="div">
 								<AnswerMatch
 									matches={answer.parameter.matches}
 									similarity_score={answer.similarity_score}
@@ -70,7 +70,7 @@ const AnswerCard = ({ answer }: AnswerCardProps) => {
 
 				<AccordionDetails>
 					{answer.sources.map((source, index) => (
-						<Typography key={index}>
+						<Typography key={index} component="div">
 							{componentFactory(source)}
 							{index !== answer.sources.length - 1 && (
 								<HorizontalDivider />
