@@ -1,0 +1,21 @@
+.container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap-reverse;
+	min-width: 150px;
+
+	gap: 0.5rem;
+}
+
+.similarity__score {
+	white-space: nowrap;
+}
+
+@media (min-width: 640px) {
+	.container {
+		flex-wrap: nowrap !important;
+		min-width: 250px;
+	}
+}

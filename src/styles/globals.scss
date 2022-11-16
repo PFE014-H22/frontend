@@ -19,3 +19,12 @@ a {
 	margin: 0;
 	box-sizing: border-box;
 }
+
+.MuiAccordionSummary-content {
+	margin-block: 0px !important;
+	width: 100% !important;
+}
+
+.MuiAccordionSummary-root {
+	padding: 0 !important;
+}

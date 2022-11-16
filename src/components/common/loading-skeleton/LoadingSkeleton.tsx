@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-import { UrlObject } from 'url';
 import Skeleton from '@mui/material/Skeleton';
 import styles from './LoadingSkeleton.module.scss';
 

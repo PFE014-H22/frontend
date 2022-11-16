@@ -1,7 +1,5 @@
 import styles from './MemberPortrait.module.scss'
-import LinkImage, {
-	LinkImageProps,
-} from '../../../common/link-image/LinkImage';
+import { LinkImageProps } from '../../../common/link-image/LinkImage';
 import NextLink from 'next/link';
 import Image from 'next/image';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';

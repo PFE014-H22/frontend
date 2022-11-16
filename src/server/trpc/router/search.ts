@@ -2,7 +2,6 @@ import axios from 'axios';
 import { z } from 'zod';
 import { env } from '../../../env/server.mjs';
 import { publicProcedure, router } from '../trpc';
-import { detailsSchema } from './details';
 
 /**
  * Schema defining the expected shape of the response
@@ -12,7 +11,30 @@ export const searchSchema = z.object({
 	/**
 	 * List of all the answers for the user query.
 	 */
-	answers: z.array(detailsSchema),
+	answers: z.array(
+		z.object({
+			parameter: z.object({
+				description: z.string(),
+				matches: z.number(),
+				name: z.string(),
+			}),
+			similarity_score: z.number(),
+			sources: z.array(
+				z.object({
+					answer_id: z.number(),
+					is_accepted: z.boolean(),
+					link: z.string(),
+					name: z.enum(['stackoverflow']),
+					question_body: z.string(),
+					question_id: z.string(),
+					question_title: z.string(),
+					response_body: z.string(),
+					similarity_score: z.number(),
+					tags: z.array(z.string()),
+				}),
+			),
+		}),
+	),
 	/**
 	 * The user searched term.
 	 */
@@ -29,6 +51,11 @@ export const searchSchema = z.object({
 export type SearchResponse = z.infer<typeof searchSchema>;
 
 /**
+ * Extracted utility for a single source from the `SearchResponse` type.
+ */
+export type Source = SearchResponse['answers'][0]['sources'][0];
+
+/**
  * Trpc router to encapsulate the network requests for searching parameters.
  */
 export const searchRouter = router({
@@ -41,7 +68,7 @@ export const searchRouter = router({
 			const { data } = await axios.get(`${env.PROXY_API}/search`, {
 				params: {
 					q: encodeURIComponent(input.searchTerm),
-					t: encodeURIComponent(input.technology)
+					t: encodeURIComponent(input.technology),
 				},
 			});
 			return searchSchema.parse(data);
