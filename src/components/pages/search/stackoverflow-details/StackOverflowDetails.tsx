@@ -1,3 +1,4 @@
+import { setBoldParameters } from '../../../../lib/setBoldParameters';
 import { Source } from '../../../../server/trpc/router/search';
 import PercentageMatchBar from '../../../common/percentage-match-bar/PercentageMatchBar';
 import Tag from '../tag/Tag';
@@ -12,13 +13,21 @@ export interface StackOverflowDetailsProps {
 	 * was found.
 	 */
 	source: Source;
+
+	/**
+	 * The parameter found within the response's body that should be 
+	 * configured. 
+	 */
+	parameter: string;
 }
 
 /**
  * Component to wrap the content of the details from a single source for
  * a config parameter.
  */
-const StackOverflowDetails = ({ source }: StackOverflowDetailsProps) => {
+const StackOverflowDetails = ({ source, parameter }: StackOverflowDetailsProps) => {
+	setBoldParameters(parameter, source.response_body);
+
 	return (
 		<>
 			<div className={styles.container}>
