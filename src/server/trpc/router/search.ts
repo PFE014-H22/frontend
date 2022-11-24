@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { z } from 'zod';
 import { env } from '../../../env/server.mjs';
+import { setBoldParameters } from '../../../lib/setBoldParameters';
 import { publicProcedure, router } from '../trpc';
 
 /**
@@ -70,7 +71,16 @@ export const searchRouter = router({
 					t: encodeURIComponent(input.technology),
 				},
 			});
-			return searchSchema.parse(data);
+
+			let parsedData = searchSchema.parse(data);
+
+			parsedData.answers.map((answer) => {
+				answer.sources.map((source) => {
+					setBoldParameters(answer.parameter.name, source.response_body);
+				});
+			});
+
+			return parsedData;
 		}),
 	/**
 	 * Mocks the implementation of the backend server. (GET /search)

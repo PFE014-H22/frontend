@@ -29,7 +29,7 @@ const AnswerCard = ({ answer }: AnswerCardProps) => {
 	const componentFactory = (source: Source) => {
 		switch (source.source_name) {
 			case 'stackoverflow':
-				return <StackOverflowDetails source={source} parameter={answer.parameter.name} />;
+				return <StackOverflowDetails source={source} />;
 			default:
 				return null;
 		}
