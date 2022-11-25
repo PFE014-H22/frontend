@@ -72,15 +72,13 @@ export const searchRouter = router({
 				},
 			});
 
-			let parsedData = searchSchema.parse(data);
+			const parsedData = searchSchema.parse(data);
 
-			parsedData.answers.map((answer) => {
+			return parsedData.answers.map((answer) => {
 				answer.sources.map((source) => {
 					setBoldParameters(answer.parameter.name, source.response_body);
 				});
 			});
-
-			return parsedData;
 		}),
 	/**
 	 * Mocks the implementation of the backend server. (GET /search)
