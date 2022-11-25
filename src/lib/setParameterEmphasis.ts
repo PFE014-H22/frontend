@@ -9,5 +9,5 @@ export const setParameterEmphasis = (
     parameter: string,
     response_body: string
 ) => {
-    return response_body.replaceAll(parameter, `$<span class="emphasis">${parameter}</span>`);
+    return response_body.replaceAll(parameter, `<span class="emphasis">${parameter}</span>`);
 }
