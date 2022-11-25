@@ -20,6 +20,12 @@ a {
 	box-sizing: border-box;
 }
 
+.emphasis {
+	font-weight: bolder;
+	border: 1px solid black;
+	padding: 0.125rem;
+}
+
 .MuiAccordionSummary-content {
 	margin-block: 0px !important;
 	width: 100% !important;
