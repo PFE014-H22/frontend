@@ -1,7 +1,6 @@
 .container, .no_logo {
 	display: flex;
-	max-height: 24px;
-	margin-bottom: 20px;
+	max-height: 36px;
 }
 
 .container {
@@ -10,16 +9,10 @@
 
 .no_logo {
 	justify-content: end;
+	min-height: 36px;
 }
 
-.links {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	gap: 0.5rem;
-}
-
-.logo__wrapper {
+.logo_wrapper {
 	display: flex;
 	align-items: center;
 	min-height: 36px;

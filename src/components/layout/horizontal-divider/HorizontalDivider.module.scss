@@ -1,3 +1,5 @@
+@import '../../../styles/colors';
+
 .container {
 	display: flex;
 	justify-content: center;
@@ -6,11 +8,9 @@
 }
 
 .divider {
-	$color: #6f6f6f;
-
 	border: none;
 	height: 1px;
 	width: 35%;
-	color: $color;
-	background-color: $color;
+	color: $dark-gray;
+	background-color: $dark-gray;
 }

@@ -38,7 +38,7 @@ const AboutPage: NextPage = () => {
 						<TechnologyIcon
 							name="GitHub"
 							src="/github.svg"
-							href="#"
+							href="https://github.com/orgs/PFE014-H22/repositories"
 						/>
 
 						<TechnologyIcon
@@ -61,32 +61,37 @@ const AboutPage: NextPage = () => {
 					<div className={styles.team__container}>
 						<MemberPortrait
 							memberName="Jérémy Lalonde"
-							src="/user.svg"
-							href="#"
+							title="Developer"
+							src="/Jeremy_Lalonde_Pic.png"
+							href="https://www.linkedin.com/in/jeremy-lalonde/"
 						/>
 
 						<MemberPortrait
 							memberName="Hamza Laghrieb"
+							title="Developer"
 							src="/user.svg"
-							href="#"
+							href="https://www.linkedin.com/in/hamza-laghrieb/"
 						/>
 
 						<MemberPortrait
 							memberName="Loïc Léger"
-							src="/user.svg"
-							href="#"
+							title="Developer"
+							src="/Loic_Leger_Pic.png"
+							href="https://www.linkedin.com/in/loicleger7/"
 						/>
 
 						<MemberPortrait
 							memberName="Gabriel Roberge"
-							src="/user.svg"
-							href="#"
+							title="Developer"
+							src="/Gabriel_Roberge_Pic.png"
+							href="https://www.linkedin.com/in/gabriel-roberge-9865de76/"
 						/>
 
 						<MemberPortrait
 							memberName="Gabriel Somma"
-							src="/user.svg"
-							href="#"
+							title="Developer"
+							src="/Gabriel_Somma_Pic.png"
+							href="https://www.linkedin.com/in/gabriel-somma/"
 						/>
 					</div>
 				</section>

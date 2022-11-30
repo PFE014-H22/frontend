@@ -1,8 +1,15 @@
-import Link from 'next/link';
-import { useMemo } from 'react';
-import { SearchResponse } from '../../../../server/trpc/router/search';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import {
+	Accordion,
+	AccordionDetails,
+	AccordionSummary,
+	Typography,
+} from '@mui/material';
+import { SearchResponse, Source } from '../../../../server/trpc/router/search';
 import Card from '../../../common/card/Card';
-import PercentageMatchBar from '../../../common/percentage-match-bar/PercentageMatchBar';
+import HorizontalDivider from '../../../layout/horizontal-divider/HorizontalDivider';
+import AnswerMatch from '../answer-match/AnswerMatch';
+import StackOverflowDetails from '../stackoverflow-details/StackOverflowDetails';
 import styles from './AnswerCard.module.scss';
 
 /**
@@ -13,60 +20,61 @@ export interface AnswerCardProps {
 	 * Single answer object from the search backend response.
 	 */
 	answer: SearchResponse['answers'][0];
-
-	/**
-	 * The search term that was queried to get the answer.
-	 */
-	searchTerm: string;
-
-	/**
-	 * The technology that was selected to get the answer.
-	 */
-	technology: string;
 }
 
 /**
  * Component used to display the content from one answer from the backend.
  */
-const AnswerCard = ({ answer, searchTerm, technology }: AnswerCardProps) => {
-	const detailsHref = useMemo(() => {
-		let url = `/search/details/${answer.parameter.name}`;
-		url += `?q=${encodeURIComponent(searchTerm)}`;
-		url += `&t=${encodeURIComponent(technology)}`;
-		return url;
-	}, [answer.parameter.name, searchTerm, technology]);
+const AnswerCard = ({ answer }: AnswerCardProps) => {
+	const componentFactory = (source: Source) => {
+		switch (source.source_name) {
+			case 'stackoverflow':
+				return <StackOverflowDetails source={source} />;
+			default:
+				return null;
+		}
+	};
 
 	return (
 		<Card>
-			<Link href={detailsHref} passHref>
-				<a className={styles.link__parameter}>
-					{answer.parameter.name}
-				</a>
-			</Link>
+			<Accordion
+				className={styles.accordion__container}
+				elevation={0}
+				disableGutters
+			>
+				<AccordionSummary
+					className={styles.accordion__summary}
+					expandIcon={
+						<ExpandMoreIcon className={styles.accordion__icon} />
+					}
+				>
+					<div className={styles.summary__content}>
+						<div className={styles.summary__content__row}>
+							<Typography className={styles.parameter__name}>
+								{answer.parameter.name}
+							</Typography>
 
-			<div className={styles.content__container}>
-				<div className={styles.description__container}>
-					<p className={styles.description}>
-						{answer.parameter.description}
-					</p>
-				</div>
-
-				<div className={styles.parameter__results__container}>
-					<span className={styles.match__container}>
-						{answer.parameter.matches} matches
-					</span>
-
-					<div className={styles.match__bar__container}>
-						<span className={styles.similarity__score}>
-							{(answer.similarity_score * 100).toFixed(2)}%
-						</span>
-
-						<PercentageMatchBar
-							percentage={answer.similarity_score}
-						/>
+							<Typography component="div">
+								<AnswerMatch
+									matches={answer.parameter.matches}
+									similarity_score={answer.similarity_score}
+								/>
+							</Typography>
+						</div>
 					</div>
-				</div>
-			</div>
+				</AccordionSummary>
+
+				<AccordionDetails>
+					{answer.sources.map((source, index) => (
+						<Typography key={index} component="div">
+							{componentFactory(source)}
+							{index !== answer.sources.length - 1 && (
+								<HorizontalDivider />
+							)}
+						</Typography>
+					))}
+				</AccordionDetails>
+			</Accordion>
 		</Card>
 	);
 };

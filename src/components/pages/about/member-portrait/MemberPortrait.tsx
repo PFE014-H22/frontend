@@ -1,6 +1,8 @@
-import LinkImage, {
-	LinkImageProps,
-} from '../../../common/link-image/LinkImage';
+import styles from './MemberPortrait.module.scss'
+import { LinkImageProps } from '../../../common/link-image/LinkImage';
+import NextLink from 'next/link';
+import Image from 'next/image';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 /**
  * The props used to configure the `MemberPortrait` component.
@@ -17,6 +19,11 @@ export interface MemberPortraitProps {
 	memberName: string;
 
 	/**
+	 * Role of the member within the team.
+	 */
+	title: string;
+
+	/**
 	 * Source of the image to display.
 	 */
 	src: LinkImageProps['src'];
@@ -25,16 +32,30 @@ export interface MemberPortraitProps {
 /**
  * Component used to display a single member in the `/about` page.
  */
-const MemberPortrait = ({ memberName, ...props }: MemberPortraitProps) => {
+const MemberPortrait = ({ memberName, title, ...props }: MemberPortraitProps) => {
 	return (
-		<LinkImage
-			width={128}
-			height={128}
-			alt={`Picture of ${memberName}`}
-			{...props}
-		>
-			{memberName}
-		</LinkImage>
+		<NextLink href={props.href} passHref>
+			<a>
+				<div className={styles.portrait}>
+					<div className={styles.portrait_background}>
+						<Image
+							src={props.src}
+							height={128}
+							width={128}
+							quality={100}
+							alt={`Picture of ${memberName}`}
+						/>
+					</div>
+					<LinkedInIcon className={styles.linkedin_icon}/>
+				</div>
+				<div className={styles.member}>
+					{memberName}
+				</div>
+				<div className={styles.title}>
+					{title}
+				</div>
+			</a>
+		</NextLink>
 	);
 };
 
