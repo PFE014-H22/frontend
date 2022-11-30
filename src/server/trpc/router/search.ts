@@ -15,7 +15,6 @@ export const searchSchema = z.object({
 	answers: z.array(
 		z.object({
 			parameter: z.object({
-				description: z.string(),
 				matches: z.number(),
 				name: z.string(),
 			}),
@@ -62,7 +61,7 @@ export const searchRouter = router({
 	/**
 	 * Retrieve the config parameters from the backend server (GET /search)
 	 */
-	stackoverflow: publicProcedure
+	details: publicProcedure
 		.input(z.object({ searchTerm: z.string(), technology: z.string() }))
 		.query(async ({ input }) => {
 			const { data } = await axios.get(`${env.PROXY_API}/search`, {
@@ -91,7 +90,7 @@ export const searchRouter = router({
 	/**
 	 * Mocks the implementation of the backend server. (GET /search)
 	 */
-	mockStackoverflow: publicProcedure
+	mockDetails: publicProcedure
 		.input(z.object({ searchTerm: z.string(), technology: z.string() }))
 		.query(async ({ input }) => {
 			return {
@@ -100,8 +99,6 @@ export const searchRouter = router({
 						similarity_score: 0.21544325589298968,
 						parameter: {
 							name: 'Parameter 1',
-							description:
-								'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus ratione soluta eaque veniam, pariatur ducimus fugiat necessitatibus doloribus accusantium tenetur.',
 							matches: 3,
 						},
 						sources: [
@@ -124,8 +121,6 @@ export const searchRouter = router({
 						similarity_score: 0.21544325589298968,
 						parameter: {
 							name: 'Parameter 2',
-							description:
-								'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus ratione soluta eaque veniam, pariatur ducimus fugiat necessitatibus doloribus accusantium tenetur.',
 							matches: 3,
 						},
 						sources: [
@@ -148,8 +143,6 @@ export const searchRouter = router({
 						similarity_score: 0.21544325589298968,
 						parameter: {
 							name: 'Parameter 3',
-							description:
-								'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus ratione soluta eaque veniam, pariatur ducimus fugiat necessitatibus doloribus accusantium tenetur.',
 							matches: 3,
 						},
 						sources: [
@@ -172,8 +165,6 @@ export const searchRouter = router({
 						similarity_score: 0.21544325589298968,
 						parameter: {
 							name: 'Parameter 4',
-							description:
-								'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus ratione soluta eaque veniam, pariatur ducimus fugiat necessitatibus doloribus accusantium tenetur.',
 							matches: 3,
 						},
 						sources: [
@@ -196,8 +187,6 @@ export const searchRouter = router({
 						similarity_score: 0.21544325589298968,
 						parameter: {
 							name: 'Parameter 4',
-							description:
-								'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus ratione soluta eaque veniam, pariatur ducimus fugiat necessitatibus doloribus accusantium tenetur.',
 							matches: 3,
 						},
 						sources: [
@@ -220,8 +209,6 @@ export const searchRouter = router({
 						similarity_score: 0.21544325589298968,
 						parameter: {
 							name: 'Parameter 5',
-							description:
-								'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus ratione soluta eaque veniam, pariatur ducimus fugiat necessitatibus doloribus accusantium tenetur.',
 							matches: 3,
 						},
 						sources: [
@@ -244,8 +231,6 @@ export const searchRouter = router({
 						similarity_score: 0.21544325589298968,
 						parameter: {
 							name: 'Parameter 6',
-							description:
-								'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus ratione soluta eaque veniam, pariatur ducimus fugiat necessitatibus doloribus accusantium tenetur.',
 							matches: 3,
 						},
 						sources: [
@@ -268,8 +253,6 @@ export const searchRouter = router({
 						similarity_score: 0.21544325589298968,
 						parameter: {
 							name: 'Parameter 7',
-							description:
-								'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus ratione soluta eaque veniam, pariatur ducimus fugiat necessitatibus doloribus accusantium tenetur.',
 							matches: 3,
 						},
 						sources: [
@@ -292,8 +275,6 @@ export const searchRouter = router({
 						similarity_score: 0.21544325589298968,
 						parameter: {
 							name: 'Parameter 8',
-							description:
-								'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus ratione soluta eaque veniam, pariatur ducimus fugiat necessitatibus doloribus accusantium tenetur.',
 							matches: 3,
 						},
 						sources: [
@@ -316,8 +297,6 @@ export const searchRouter = router({
 						similarity_score: 0.21544325589298968,
 						parameter: {
 							name: 'Parameter 9',
-							description:
-								'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus ratione soluta eaque veniam, pariatur ducimus fugiat necessitatibus doloribus accusantium tenetur.',
 							matches: 3,
 						},
 						sources: [
@@ -341,8 +320,6 @@ export const searchRouter = router({
 						similarity_score: 0.21544325589298968,
 						parameter: {
 							name: 'Parameter 10',
-							description:
-								'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus ratione soluta eaque veniam, pariatur ducimus fugiat necessitatibus doloribus accusantium tenetur.',
 							matches: 3,
 						},
 						sources: [

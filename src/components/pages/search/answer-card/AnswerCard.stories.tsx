@@ -16,8 +16,6 @@ Primary.args = {
 		similarity_score: 0.21544325589298968,
 		parameter: {
 			name: 'Parameter',
-			description:
-				'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus ratione soluta eaque veniam, pariatur ducimus fugiat necessitatibus doloribus accusantium tenetur.',
 			matches: 3,
 		},
 		sources: [
