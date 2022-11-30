@@ -61,10 +61,6 @@ const AnswerCard = ({ answer }: AnswerCardProps) => {
 								/>
 							</Typography>
 						</div>
-
-						<Typography className={styles.parameter__description}>
-							{answer.parameter.description}
-						</Typography>
 					</div>
 				</AccordionSummary>
 
