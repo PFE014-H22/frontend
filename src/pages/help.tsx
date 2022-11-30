@@ -17,33 +17,38 @@ const HelpPage: NextPage = () => {
 			</Head>
 
 			<div className={styles.container}>
-				<h1 className={styles.title}>Get Help</h1>
+				<h1 className={styles.title}>Need a hand?</h1>
 
 				<main>
 					<section className={styles.steps__section}>
 						<h2 className={styles.steps__title}>
-							Steps to ask a question
+							Steps to make a query
 						</h2>
 
 						<div className={styles.steps__container}>
 							<Step stepIndex={1}>
-								Type your question in the search box.
+								Type your query in the search box.
 							</Step>
 
 							<Step stepIndex={2}>
 								Refine your search by clicking on the
-								&quot;Technologies&quot; menu and selecting a specific
+								&quot;Technology&quot; dropdown menu and selecting a specific
 								technology.
 							</Step>
 
 							<Step stepIndex={3}>
 								Press ENTER on your keyboard or click on the
-								search button to ask your question.
+								search button to make your query.
 							</Step>
 
 							<Step stepIndex={4}>
 								Navigate the list of results to find the
 								parameter that will fix your issue.
+							</Step>
+
+							<Step stepIndex={5}>
+								You may click on the arrow button in the top left corner of
+								each result to see more details.
 							</Step>
 						</div>
 					</section>
