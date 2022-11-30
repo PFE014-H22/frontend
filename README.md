@@ -48,12 +48,12 @@ To test the frontend without having to start Docker and running the entire appli
 npm run start:dev
 ```
 
-> **Note:** You may want to use mocks, since you won't be making queries to the StackOverflow API. 
+> **Note:** You may want to use mocks, since you won't be making queries to the backend API. 
 
 Notably, in `frontend > src > pages > search.tsx`, you may want to change
 
 ```
-const { data, isLoading } = trpc.search.stackoverflow.useQuery({
+const { data, isLoading } = trpc.search.details.useQuery({
 	searchTerm: q as string,
 	technology: t as string,
 });
@@ -62,7 +62,7 @@ const { data, isLoading } = trpc.search.stackoverflow.useQuery({
 to
 
 ```
-const { data, isLoading } = trpc.search.mockStackoverflow.useQuery({
+const { data, isLoading } = trpc.search.mockDetails.useQuery({
 	searchTerm: q as string,
 	technology: t as string,
 });
