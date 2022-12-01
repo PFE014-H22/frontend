@@ -24,8 +24,8 @@ export class SearchQuery {
 		return {
 			pathname: SEARCH_PAGE_PATH,
 			query: {
-				q: encodeURIComponent(this.searchTerm),
-				t: encodeURIComponent(this.technology),
+				q: this.searchTerm,
+				t: this.technology,
 			},
 		};
 	}
